@@ -16,13 +16,17 @@ mongoose.connect(URL, function(err){
 
 
 router.get('/', function(req, res, next) {
-
-    mongoose.connect(URL, function(err){
+    mongoose.connect(URL, function(err,db){
         if(err){
             console.log('database not connected');
         }
-         else res.send('fhjfgh');
 
+        var collection = db.collection('profile')
+          collection.find(function (err,data) {
+              if(err) send(err);
+              res.json(data);
+
+          })
     });
 
 
