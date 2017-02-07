@@ -16,7 +16,7 @@ mongoose.connect(URL, function(err){
 
 
 router.get('/', function(req, res, next) {
- res.console.log('fhjfgh');
+ res.send('fhjfgh');
 
 
 });
