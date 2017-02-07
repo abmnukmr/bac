@@ -12,14 +12,11 @@ var db=mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti'
 
 });
 
-mongoose.connection.once('connected', function() {
-    console.log("Connected to database")
-});
 
 
 router.get('/', function(req, res, next) {
 
-  db.profile.find(function (err,data) {
+  db.collection('profle').find(function (err,data) {
 
     if(err){
       console.log('hhjhfgsj');
@@ -28,9 +25,6 @@ router.get('/', function(req, res, next) {
     res.json(data);
   });
 
-  res.render('index', { title: 'abkgkgmnu' });
-
-   res.console.log("sadbjsa");
 });
 
 module.exports = router;
