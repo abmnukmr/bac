@@ -20,7 +20,7 @@ mongoose.connection.once('connected', function() {
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'abkgkgmnu' });
 
-    console.log("sadbjsa");
+   res.console.log("sadbjsa");
 });
 
 module.exports = router;
