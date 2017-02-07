@@ -18,7 +18,7 @@ mongoose.connection.once('connected', function() {
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'abmnu' });
+  res.render('index', { title: 'abkgkgmnu' });
 
     console.log("sadbjsa");
 });
