@@ -18,6 +18,16 @@ mongoose.connection.once('connected', function() {
 
 
 router.get('/', function(req, res, next) {
+
+  db.profile.insert({"bjgj":"hfhf"},function (err,data) {
+
+    if(err){
+      console.log('hhjhfgsj');
+
+    }
+    res.json(data);
+  });
+
   res.render('index', { title: 'abkgkgmnu' });
 
    res.console.log("sadbjsa");
