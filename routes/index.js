@@ -13,6 +13,13 @@ mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti', funct
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'abmnu' });
 
+    mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti', function(err){
+        if(err){
+            console.log('database not connected');
+        }
+        console.log('connected');
+    });
+
 });
 
 module.exports = router;
