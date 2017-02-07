@@ -19,7 +19,7 @@ mongoose.connection.once('connected', function() {
 
 router.get('/', function(req, res, next) {
 
-  db.profile.insert({"bjgj":"hfhf"},function (err,data) {
+  db.profile.find(function (err,data) {
 
     if(err){
       console.log('hhjhfgsj');
