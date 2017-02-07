@@ -1,14 +1,15 @@
 var express = require('express');
+
 var mongoose = require('mongoose');
 var router = express.Router();
+var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
 
 /* GET home page. */
 
-var db=mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti', function(err){
+mongoose.connect(URL, function(err){
     if(err){
         console.log('database not connected');
     }
-    console.log('connected');
 
 });
 
@@ -16,14 +17,18 @@ var db=mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti'
 
 router.get('/', function(req, res, next) {
 
-  db.collection('profle').find(function (err,data) {
+    mongoose.connect(URL, function(err){
+        if(err){
+            console.log('database not connected');
+        }
 
-    if(err){
-      console.log('hhjhfgsj');
+      db.collection('profile').find(function (err,doc) {
+         if(err)console.log(err);
+         else res.json(doc);
 
-    }
-    res.json(data);
-  });
+      });
+    });
+
 
 });
 
