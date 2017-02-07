@@ -9,17 +9,18 @@ mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti', funct
         console.log('database not connected');
     }
     console.log('connected');
+
 });
+
+mongoose.connection.once('connected', function() {
+    console.log("Connected to database")
+});
+
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'abmnu' });
 
-    mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti', function(err){
-        if(err){
-            console.log('database not connected');
-        }
-        console.log('connected');
-    });
-
+    console.log("sadbjsa");
 });
 
 module.exports = router;
