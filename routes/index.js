@@ -17,7 +17,7 @@ mongoose.connect(URL, function(err){
 
 
 router.get('/', function(req, res, next) {
-    mongoose.connect(URL, function(err,db){
+    mongoose.connect(URL, function(err){
         if(err){
             console.log('database not connected');
         }
