@@ -8,6 +8,7 @@ mongoose.connect('mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti', funct
     if(err){
         console.log('database not connected');
     }
+    console.log('connected');
 });
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'abmnu' });
