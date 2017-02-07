@@ -16,18 +16,7 @@ mongoose.connect(URL, function(err){
 
 
 router.get('/', function(req, res, next) {
-
-    mongoose.connect(URL, function(err){
-        if(err){
-            console.log('database not connected');
-        }
-
-        db.collection('profile').find(function (err,doc) {
-         if(err)console.log(err);
-         else res.json(doc);
-
-      });
-    });
+ res.console.log('fhjfgh');
 
 
 });
