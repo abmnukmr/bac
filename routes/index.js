@@ -3,6 +3,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
+db = mongo.db(URL);
 
 /* GET home page. */
 
