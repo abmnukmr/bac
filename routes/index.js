@@ -24,8 +24,8 @@ router.get('/', function(req, res, next) {
 
         var collection = db.collection('profile')
           collection.find(function (err,data) {
-              if(err) send(err);
-              res.json(data);
+              if(err) res.send(err);
+              res.send(data);
 
           });
     });
