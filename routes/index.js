@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
             console.log('database not connected');
         }
 
-      db.collection('profile').find(function (err,doc) {
+        database.collection('profile').find(function (err,doc) {
          if(err)console.log(err);
          else res.json(doc);
 
