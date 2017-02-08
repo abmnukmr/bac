@@ -16,7 +16,7 @@ users.find(function (err,data) {
 router.get('/profile/:id', function(req, res, next) {
     users.find({'email':req.params.id },function (err,docs) {
         if(err) console.log(err);
-        else res.send.JSON.parse(docs);
+        else res.send(docs);
 
     })
 
