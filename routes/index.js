@@ -1,38 +1,25 @@
 var express = require('express');
-
-var mongoose = require('mongoose');
 var router = express.Router();
+var mongoose=require('mongoose');
 var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
-db = mongo.db(URL);
+const db = require('monk')(URL)
+const users = db.get('profile')
 
-/* GET home page. */
+/*
+users.find(function (err,data) {
+    if(err) console.log(err);
+    console.log(data);
 
-mongoose.connect(URL, function(err){
-    if(err){
-        console.log('database not connected');
-    }
+})
+*/
 
-});
+router.get('/profile/:id', function(req, res, next) {
+    users.find({'email':req.params.id },function (err,docs) {
+        if(err) console.log(err);
+        else res.send.JSON.parse(docs);
 
+    })
 
-
-router.get('/', function(req, res, next) {
-    mongoose.connect(URL, function(err){
-        if(err){
-            console.log('database not connected');
-        }
-
-        var collection = db.collection('profile')
-          collection.find(function (err,data) {
-              if(err) res.send(err);
-              res.send(data);
-
-          });
-    });
-
-
-
-
-});
+  });
 
 module.exports = router;
