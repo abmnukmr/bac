@@ -1,5 +1,10 @@
-extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+form(method="POST", action='/profile/upload' enctype='multipart/form-data')
+  p Name
+    input(type="file", name="name")
+  p Email
+    input(type="file", name="email")
+  p Age
+    input(type="file", name="age")
+  p
+    input(type="submit")

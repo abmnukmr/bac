@@ -1,10 +1,36 @@
 var express = require('express');
 var router = express.Router();
-var mongoose=require('mongoose');
+var multer = require('multer');
 var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
 const db = require('monk')(URL)
 const users = db.get('profile')
 const search = db.get('search')
+
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/images')
+    },
+    filename: function (req, file, cb) {
+        cb(null,   Date.now()+file.originalname);
+    }
+});
+var upload = multer({ storage: storage });
+
+
+router.get('/profile/upload',function (req,res,next) {
+    res.render('index');
+
+
+})
+
+router.post('/profile/upload',upload.any(),function (req,res,next) {
+
+    res.send(req.files);
+    console.log(req.files);
+
+
+})
 
 
 /*
@@ -29,6 +55,7 @@ router.get('/:id', function(req, res, next) {
 
     })
 });
+
 router.get('/all', function(req, res, next) {
     users.find(function (err) {
         if(err) console.log(err);
@@ -36,6 +63,8 @@ router.get('/all', function(req, res, next) {
 
     })
 });
+
+
 
 
 module.exports = router;
