@@ -8,7 +8,7 @@ const db = require('monk')(URL)
 const users = db.get('profile')
 const search = db.get('search')
 
-/*
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/images')
@@ -17,15 +17,14 @@ var storage = multer.diskStorage({
         cb(null,   Date.now()+file.originalname);
     }
 });
-*/
-//var upload = multer({ storage: storage });
+var upload = multer({ storage: storage });
 
-
+/*
 var s3 = new aws.S3( {
     AWS_ACCESS_KEY_ID: 'AKIAIVV63WHHD6L4E4RQ',
     AWS_SECRET_ACCESS_KEY: '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'
- })
-
+ })*/
+/*
 var upload = multer({
     storage: multerS3({
         s3: s3,
@@ -38,7 +37,7 @@ var upload = multer({
         }
     })
 })
-
+*/
 
 
 
