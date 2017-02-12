@@ -9,26 +9,27 @@ const users = db.get('profile')
 const search = db.get('search')
 
 
-var storage = multer.diskStorage({
+
+aws.config.loadFromPath('./config.json');
+/*var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/images')
     },
     filename: function (req, file, cb) {
         cb(null,   Date.now()+file.originalname);
     }
-});
-var upload = multer({ storage: storage });
+});*/
+//var upload = multer({ storage: storage });
+var s0 = new aws.S3({})
 
-/*
-var s3 = new aws.S3( {
-    AWS_ACCESS_KEY_ID: 'AKIAIVV63WHHD6L4E4RQ',
-    AWS_SECRET_ACCESS_KEY: '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'
- })*/
-/*
+
 var upload = multer({
     storage: multerS3({
-        s3: s3,
+        s3: s0,
         bucket: 'vioti',
+       accessKeyId:'AKIAI3Q6TFHIZE67TWSQ',
+       secretAccessKey: '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',
+
         metadata: function (req, file, cb) {
             cb(null, {fieldName: file.fieldname});
         },
@@ -37,7 +38,6 @@ var upload = multer({
         }
     })
 })
-*/
 
 
 
@@ -72,7 +72,7 @@ router.get('/profile/:id', function(req, res, next) {
         else res.json(docs[0]);
     })
 });
-
+/*
 router.get('/:id', function(req, res, next) {
     users.insert({'email':req.params.id },function (err) {
         if(err) console.log(err);
@@ -80,7 +80,7 @@ router.get('/:id', function(req, res, next) {
 
     })
 });
-
+*/
 router.get('/all', function(req, res, next) {
     users.find(function (err) {
         if(err) console.log(err);

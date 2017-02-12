@@ -49,4 +49,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const S3_BUCKET = process.env.S3_BUCKET;
 module.exports = app;
