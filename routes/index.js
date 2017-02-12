@@ -11,6 +11,9 @@ const search = db.get('search')
 
 
 aws.config.loadFromPath('./config.json');
+aws.config.update({
+    signatureVersion: 'v4'
+});
 /*var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/images')
@@ -27,6 +30,7 @@ var upload = multer({
     storage: multerS3({
         s3: s0,
         bucket: 'vioti',
+        acl: 'public-read',
        accessKeyId:'AKIAI3Q6TFHIZE67TWSQ',
        secretAccessKey: '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',
 
@@ -34,7 +38,7 @@ var upload = multer({
             cb(null, {fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
-            cb(null, Date.now().toString())
+            cb(null, Date.now()+file.originalname)
         }
     })
 })
