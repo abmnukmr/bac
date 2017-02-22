@@ -45,26 +45,29 @@ var upload = multer({
 
 
 
-  router.get('/profile/upload/:id',function (req,res,next) {
+  router.get('/profile/upload/email/:id1',function (req,res,next) {
     res.render('index');
-
+    // console.log(req.params.id1,req.params.id2,req.params.id3,req.params.id4+" Hello");
 
   })
 
-   router.post('/profile/upload/:id',upload.any(),function (req,res,next) {
+   router.post('/profile/upload/email/:id1',upload.any(),function (req,res,next) {
 
   //  res.send(req.files);
     //console.log(req.files);
 
     items={
-        "itemno" : "#1",
-        "description" :"fgfhfhfg",
-        "price": "220/-",
+        "itemno" : "res.body.id2",
+        "description" :"res.body.id3",
+        "price": "res.body.id4",
         "id" : Date.now(),
         "image":req.files
     }
+
+       console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
+    console.log(items);
     ///item is main key
-    users.update({'email':req.params.id},{$push: {item:items}}, function( err,res, result ) {
+    users.update({'email':req.params.id1},{$push: {item:items}}, function( err,res, result ) {
         if ( err ) throw err;
 
         console.log("success");
