@@ -72,6 +72,7 @@ var upload = multer({
 
         console.log("success");
         res.send("success");
+        res.end();
 
     })
     })
