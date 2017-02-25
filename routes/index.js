@@ -64,7 +64,7 @@ var upload = multer({
         "image":req.files
     }
 
-       console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
+     //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
     console.log(items);
     ///item is main key
     users.update({'email':req.params.id1},{$push: {item:items}}, function( err,res, result ) {
