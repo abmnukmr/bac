@@ -84,6 +84,24 @@ users.find(function (err,data) {
 
 })
 */
+router.post('/profile/add/:id', function(req, res, next) {
+
+    shop={
+        name:
+
+
+    }
+
+
+
+    users.insert({'email':req.params.id },function (err,docs) {
+        if(err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+});
+
+
 
 router.get('/profile/:id', function(req, res, next) {
     users.find({'email':req.params.id },function (err,docs) {
