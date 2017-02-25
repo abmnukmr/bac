@@ -86,6 +86,29 @@ users.find(function (err,data) {
 */
 
 
+/*
+
+router.post('/profile/add/:id', function(req, res, next) {
+    var shop={
+        "name": req.body.name,
+        "address": req.body.address,
+        "whatsapp": req.body.whatsapp,
+        "phone": req.body.phone,
+        "lat": req.body.lat,
+        "lng": req.body.lng,
+        "email": req.body.email,
+        "discription": req.body.discription,
+        "folowers": "2",
+        "status": "true",
+
+    }
+    users.insert(shop,function (err,docs) {
+        if(err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+});
+*/
 
 
 router.get('/profile/:id', function(req, res, next) {
