@@ -86,11 +86,9 @@ users.find(function (err,data) {
 */
 router.post('/profile/add/:id', function(req, res, next) {
 
-    shop={
-        name:
 
 
-    }
+
 
 
 
