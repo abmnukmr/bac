@@ -84,20 +84,7 @@ users.find(function (err,data) {
 
 })
 */
-router.post('/profile/add/:id', function(req, res, next) {
 
-
-
-
-
-
-
-    users.insert({'email':req.params.id },function (err,docs) {
-        if(err) console.log(err);
-
-        else res.json(docs[0]);
-    })
-});
 
 
 
