@@ -45,13 +45,13 @@ var upload = multer({
 
 
 
-  router.get('/profile/upload/email/abmnukmr@gmail.com',function (req,res,next) {
+  router.get('/profile/upload/email/:id',function (req,res,next) {
     res.render('index');
     // console.log(req.params.id1,req.params.id2,req.params.id3,req.params.id4+" Hello");
 
   })
 
-   router.post('/profile/upload/email/abmnukmr@gmail.com',upload.any(),function (req,res,next) {
+   router.post('/profile/upload/email/:id',upload.any(),function (req,res,next) {
 
   //  res.send(req.files);
     //console.log(req.files);
@@ -67,7 +67,7 @@ var upload = multer({
      //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
     console.log(items);
     ///item is main key
-    users.update({'email':'abmnukmr@gmail.com'},{$push: {item:items}}, function( err,res, result ) {
+    users.update({'email':req.params.id},{$push: {item:items}}, function( err,res, result ) {
         if ( err ) {throw err;}
 
          else {
