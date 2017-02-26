@@ -81,6 +81,15 @@ var upload = multer({
 
    })
 
+   router.delete('/api/reviews/:id1/:id2', function(req, res) {
+       users.remove({
+         id : req.params.id1,
+          }, function(err, review) {
+
+    });
+});
+
+
 
 /*
 users.find(function (err,data) {
