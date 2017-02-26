@@ -57,6 +57,7 @@ var upload = multer({
     //console.log(req.files);
 
     items={
+        "itemname":req.body.itemname,
         "itemno" : req.body.itemno,
         "discription" :req.body.discription,
         "price": req.body.itemprice,
