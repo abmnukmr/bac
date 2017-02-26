@@ -61,7 +61,7 @@ var upload = multer({
         "itemno" : req.body.itemno,
         "discription" :req.body.discription,
         "price": req.body.itemprice,
-        "id" : Date.now(),
+        "id" : Date.now()+req.body.itemname,
         "image":req.files
     }
 
@@ -81,12 +81,32 @@ var upload = multer({
 
    })
 
-   router.delete('/api/reviews/:id1/:id2', function(req, res) {
-       users.remove({
-         id : req.params.id1,
-          }, function(err, review) {
+   router.get('/profile/email/:email/delete/:id',function(req, res,next) {
+      //  id9=req.params.id;
+       id2=req.params.id;
+     //  console.log("deleted");
+    //   console.log(req.params.id);
 
-    });
+       users.update({"email":req.params.email},
+           { $pull: { item:{"id":id2}}},
+           { multi: true},function (err,res,result) {
+               if(err)res.send(err);
+               else{ console.log("deleted");
+
+               console.log(id2);
+               }
+
+
+           });
+
+
+
+       //res.send("deleted Successfully");
+       console.log("deleted Successfully");
+
+       //res.end();
+
+
 });
 
 
