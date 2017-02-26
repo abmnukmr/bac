@@ -61,7 +61,7 @@ var upload = multer({
         "itemno" : req.body.itemno,
         "discription" :req.body.discription,
         "price": req.body.itemprice,
-        "id" : Date.now()+req.body.itemname,
+        "id" : Date.now()+req.body.itemno,
         "image":req.files
     }
 
