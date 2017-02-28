@@ -81,7 +81,7 @@ var upload = multer({
 
    })
 
-   router.get('/profile/email/:email/delete/:id',function(req, res,next) {
+router.get('/profile/email/:email/delete/:id',function(req, res,next) {
       //  id9=req.params.id;
        id2=req.params.id;
      //  console.log("deleted");
@@ -108,6 +108,37 @@ var upload = multer({
 
 
 });
+
+router.post('/profile/email/update/item/:id',function(req, res,next) {
+      itemname=req.body.item_name;
+      itemno=req.body.item_number;
+      discr=req.body.item_discription;
+      prc=req.body.item_price;
+      id2=req.body.item_id
+
+    users.update({"email":req.params.id,"item.id":id2},
+        { $set: { item:{"itemname": itemname, "itemno": itemno, "discription":discr, "price":prc}}}
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated done");
+
+                console.log(id2);
+            }
+
+
+        });
+
+
+
+    //res.send("deleted Successfully");
+    console.log("update Successfully");
+
+    res.send("updated");
+
+
+});
+
+
 
 
 
