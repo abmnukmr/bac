@@ -117,7 +117,8 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
       id2=req.body.item_id
 
     users.update({"email":req.params.id,"item.id":id2},
-        { $set: { item:{"itemname": itemname, "itemno": itemno, "discription":discr, "price":prc}}}
+        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
+        true
         ,function (err,res,result) {
             if(err)res.send(err);
             else{ console.log("updated done");
