@@ -1,5 +1,5 @@
 var express = require('express');
-
+var router = express.Router();
 
 var aws = require('aws-sdk');
 var router = express.Router();
@@ -230,32 +230,40 @@ router.post('/profile/email/update/contact/:id',function(req, res,next) {
 
 });
 router.post('/profile/email/update/title/:id',function(req, res,next) {
-    name=req.body. shopname;
-    location=req.body.shoplocation;
+    name = req.body.shopname;
+    location = req.body.shoplocation;
     // id2=req.body.item_id
 
-    users.update({"email":req.params.id},
-        { $set:{"name": name, "address":location}},false ,
+    users.update({"email": req.params.id},
+        {$set: {"name": name, "address": location}}, false,
         true
-        ,function (err,res,result) {
-            if(err)res.send(err);
-            else{ console.log("updated contact done");
+        , function (err, res, result) {
+            if (err) res.send(err);
+            else {
+                console.log("updated contact done");
 
                 console.log(id2);
             }
 
 
         });
-    router.post('/profile/email/update/dis/:id',function(req, res,next) {
-        discription=req.body.shoplocation;
+
+    });
+
+
+
+
+    router.post('/profile/email/update/dis/:id', function (req, res, next) {
+        discription = req.body.discription;
         // id2=req.body.item_id
 
-        users.update({"email":req.params.id},
-            { $set:{"discription": discription}},false ,
+        users.update({"email": req.params.id},
+            {$set: {"discription": discription}}, false,
             true
-            ,function (err,res,result) {
-                if(err)res.send(err);
-                else{ console.log("updated contact done");
+            , function (err, res, result) {
+                if (err) res.send(err);
+                else {
+                    console.log("updated contact done");
 
                     console.log(id2);
                 }
@@ -264,82 +272,72 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
             });
 
 
-
-
         //res.send("deleted Successfully");
-    console.log("update Successfully");
+        console.log("update Successfully");
 
-    res.send("updated");
-    res.end();
+        res.send("updated");
+        res.end();
 
-});
+    });
 
+    /*
+     users.find(function (err,data) {
+     if(err) console.log(err);
+     console.log(data);
 
-
-
-
-
-
-
-/*
-users.find(function (err,data) {
-    if(err) console.log(err);
-    console.log(data);
-
-})
-*/
+     })
+     */
 
 
-/*
+    /*
 
-router.post('/profile/add/:id', function(req, res, next) {
-    var shop={
-        "name": req.body.name,
-        "address": req.body.address,
-        "whatsapp": req.body.whatsapp,
-        "phone": req.body.phone,
-        "lat": req.body.lat,
-        "lng": req.body.lng,
-        "email": req.body.email,
-        "discription": req.body.discription,
-        "folowers": "2",
-        "status": "true",
+     router.post('/profile/add/:id', function(req, res, next) {
+     var shop={
+     "name": req.body.name,
+     "address": req.body.address,
+     "whatsapp": req.body.whatsapp,
+     "phone": req.body.phone,
+     "lat": req.body.lat,
+     "lng": req.body.lng,
+     "email": req.body.email,
+     "discription": req.body.discription,
+     "folowers": "2",
+     "status": "true",
 
-    }
-    users.insert(shop,function (err,docs) {
-        if(err) console.log(err);
+     }
+     users.insert(shop,function (err,docs) {
+     if(err) console.log(err);
 
-        else res.json(docs[0]);
-    })
-});
-*/
-
-
-router.get('/profile/:id', function(req, res, next) {
-    users.find({'email':req.params.id },function (err,docs) {
-        if(err) console.log(err);
-
-        else res.json(docs[0]);
-    })
-});
-/*
-router.get('/:id', function(req, res, next) {
-    users.insert({'email':req.params.id },function (err) {
-        if(err) console.log(err);
-        else  console.log("inserted"); res.send("inserted");
-
-    })
-});
-*/
-router.get('/all', function(req, res, next) {
-    users.find(function (err) {
-        if(err) console.log(err);
-        else  console.log("inserted"); res.send("inserted");
-
-    })
-});
+     else res.json(docs[0]);
+     })
+     });
+     */
 
 
+    router.get('/profile/:id', function (req, res, next) {
+        users.find({'email': req.params.id}, function (err, docs) {
+            if (err) console.log(err);
+
+            else res.json(docs[0]);
+        })
+    });
+    /*
+     router.get('/:id', function(req, res, next) {
+     users.insert({'email':req.params.id },function (err) {
+     if(err) console.log(err);
+     else  console.log("inserted"); res.send("inserted");
+
+     })
+     });
+     */
+    router.get('/all', function (req, res, next) {
+        users.find(function (err) {
+            if (err) console.log(err);
+            else  console.log("inserted");
+            res.send("inserted");
+
+        })
+    });
 
 
-module.exports = router;
+    module.exports = router;
