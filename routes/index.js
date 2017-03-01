@@ -205,7 +205,7 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
 router.post('/profile/email/update/contact/:id',function(req, res,next) {
     phone=req.body.phone;
     whatsapp=req.body.whatsapp;
-    id2=req.body.item_id
+   // id2=req.body.item_id
 
     users.update({"email":req.params.id},
         { $set:{"phone": phone, "whatsapp":whatsapp}},false ,
@@ -229,6 +229,34 @@ router.post('/profile/email/update/contact/:id',function(req, res,next) {
     res.end();
 
 });
+router.post('/profile/email/update/title/:id',function(req, res,next) {
+    name=req.body. shopname;
+    location=req.body.shoplocation;
+    // id2=req.body.item_id
+
+    users.update({"email":req.params.id},
+        { $set:{"name": name, "address":location}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated contact done");
+
+                console.log(id2);
+            }
+
+
+        });
+
+
+
+    //res.send("deleted Successfully");
+    console.log("update Successfully");
+
+    res.send("updated");
+    res.end();
+
+});
+
 
 
 
