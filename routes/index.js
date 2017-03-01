@@ -141,6 +141,99 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
 
 
 
+router.post('/profile/email/update/item/:id',function(req, res,next) {
+    itemname=req.body.item_name;
+    itemno=req.body.item_number;
+    discr=req.body.item_discription;
+    prc=req.body.item_price;
+    id2=req.body.item_id
+
+    users.update({"email":req.params.id,"item.id":id2},
+        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated done");
+
+                console.log(id2);
+            }
+
+
+        });
+
+
+
+    //res.send("deleted Successfully");
+    console.log("update Successfully");
+
+    res.send("updated");
+    res.end();
+
+});
+
+router.post('/profile/email/update/item/:id',function(req, res,next) {
+    itemname=req.body.item_name;
+    itemno=req.body.item_number;
+    discr=req.body.item_discription;
+    prc=req.body.item_price;
+    id2=req.body.item_id
+
+    users.update({"email":req.params.id,"item.id":id2},
+        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated done");
+
+                console.log(id2);
+            }
+
+
+        });
+
+
+
+    //res.send("deleted Successfully");
+    console.log("update Successfully");
+
+    res.send("updated");
+    res.end();
+
+});
+
+
+router.post('/profile/email/update/contact/:id',function(req, res,next) {
+    phone=req.body.phone;
+    whatsapp=req.body.whatsapp;
+    id2=req.body.item_id
+
+    users.update({"email":req.params.id},
+        { $set:{"phone": phone, "whatsapp":whatsapp}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated contact done");
+
+                console.log(id2);
+            }
+
+
+        });
+
+
+
+    //res.send("deleted Successfully");
+    console.log("update Successfully");
+
+    res.send("updated");
+    res.end();
+
+});
+
+
+
+
+
 
 
 /*
