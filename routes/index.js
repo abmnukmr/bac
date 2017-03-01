@@ -246,10 +246,27 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
 
 
         });
+    router.post('/profile/email/update/dis/:id',function(req, res,next) {
+        discription=req.body.shoplocation;
+        // id2=req.body.item_id
+
+        users.update({"email":req.params.id},
+            { $set:{"discription": discription}},false ,
+            true
+            ,function (err,res,result) {
+                if(err)res.send(err);
+                else{ console.log("updated contact done");
+
+                    console.log(id2);
+                }
+
+
+            });
 
 
 
-    //res.send("deleted Successfully");
+
+        //res.send("deleted Successfully");
     console.log("update Successfully");
 
     res.send("updated");
