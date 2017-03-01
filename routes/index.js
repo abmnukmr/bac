@@ -135,7 +135,7 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
     console.log("update Successfully");
 
     res.send("updated");
-
+   res.end();
 
 });
 
