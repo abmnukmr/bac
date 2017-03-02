@@ -124,6 +124,28 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
 })
 
 
+router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,next) {
+
+    //console.log(req.files[0]);
+    users.update({'email':req.params.id},{$set: {"status":req.body.status}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+            // res.send(result);
+        }
+    })
+  //  res.send(req.files[0]);
+
+    res.send("status updated");
+    res.end();
+
+})
+
+
+
+
+
 
 
 
