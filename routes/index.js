@@ -81,6 +81,46 @@ var upload = multer({
 
    })
 
+
+
+router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,res,next) {
+
+    //  res.send(req.files);
+    //console.log(req.files);
+
+  /*  items={
+        "itemname":req.body.itemname,
+        "itemno" : req.body.itemno,
+        "discription" :req.body.discription,
+        "price": req.body.itemprice,
+        "id" : Date.now()+"gne5cr5der",
+        "image":req.files[0]
+    }
+*/
+    //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
+    console.log(items);
+    ///item is main key
+    users.update({'email':req.params.id},{$set: {"profileimage":req.files[0]}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+            // res.send(result);
+        }
+    })
+    res.send("succesfully done");
+
+
+})
+
+
+
+
+
+
+
+
+
 router.get('/profile/email/:email/delete/:id',function(req, res,next) {
       //  id9=req.params.id;
        id2=req.params.id;
