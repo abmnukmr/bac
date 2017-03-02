@@ -109,8 +109,8 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
     //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
    // console.log(items);
     ///item is main key
-    console.log(req.files[0]);
-    users.update({'email':req.params.id},{$set: {"profileimage":req.files[0]}}, function( err,res, result ) {
+    console.log(req.files[0].location);
+    users.update({'email':req.params.id},{$set: {"profileimage":req.files[0].location}}, function( err,res, result ) {
         if ( err ) {throw err;}
 
         else {
