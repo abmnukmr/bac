@@ -82,6 +82,15 @@ var upload = multer({
    })
 
 
+router.get('/profile/upload/email/profilepic/:id',function (req,res,next){
+
+    res.render('profile');
+
+
+})
+
+
+
 
 router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,res,next) {
 
@@ -98,8 +107,9 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
     }
 */
     //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
-    console.log(items);
+   // console.log(items);
     ///item is main key
+    console.log(req.files[0]);
     users.update({'email':req.params.id},{$set: {"profileimage":req.files[0]}}, function( err,res, result ) {
         if ( err ) {throw err;}
 
@@ -108,7 +118,7 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
             // res.send(result);
         }
     })
-    res.send("succesfully done");
+    res.send(req.files[0]);
 
 
 })
