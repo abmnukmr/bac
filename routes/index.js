@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var aws = require('aws-sdk');
 var router = express.Router();
 var multerS3 = require('multer-s3');
@@ -80,6 +79,10 @@ var upload = multer({
 
 
    })
+
+
+//// send message
+
 
 
 router.get('/profile/upload/email/profilepic/:id',function (req,res,next){
@@ -304,10 +307,11 @@ router.post('/profile/email/update/contact/:id',function(req, res,next) {
 router.post('/profile/email/update/title/:id',function(req, res,next) {
     name = req.body.shopname;
     location = req.body.shoplocation;
+     catagory=req.body.shopcata;
     // id2=req.body.item_id
 
     users.update({"email": req.params.id},
-        {$set: {"name": name, "address": location}}, false,
+        {$set: {"name": name, "address": location,"catagory":catagory}}, false,
         true
         , function (err, res, result) {
             if (err) res.send(err);
