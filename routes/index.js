@@ -127,6 +127,32 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
 })
 
 
+
+
+router.post('/profile/upload/email/addmore/:id',upload.any(),function (req,res,next) {
+
+
+    var id2=req.body.id4;
+
+    console.log(req.files[0].location);
+    users.update({'email':req.params.id,"item.id":id2},{$push: {"item.$.image":req.files[0].location}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+            // res.send(result);
+        }
+    })
+    res.send(req.files[0]);
+
+
+})
+
+
+
+
+
+
 router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,next) {
 
     //console.log(req.files[0]);
@@ -144,6 +170,9 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
     res.end();
 
 })
+
+
+
 
 
 
