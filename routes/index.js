@@ -135,7 +135,7 @@ router.post('/profile/upload/email/addmore/:id',upload.any(),function (req,res,n
     var id2=req.body.id4;
 
     console.log(req.files[0].location);
-    users.update({'email':req.params.id,"item.id":id2},{$push: {"item.$.image":req.files[0].location}}, function( err,res, result ) {
+    users.update({'email':req.params.id,"item.id":id2},{$push: {"item.$.image":{"location":req.files[0].location}}}, function( err,res, result ) {
         if ( err ) {throw err;}
 
         else {
