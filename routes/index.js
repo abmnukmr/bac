@@ -93,25 +93,10 @@ router.get('/profile/upload/email/profilepic/:id',function (req,res,next){
 })
 
 
-
+//// add profile pic//
 
 router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,res,next) {
 
-    //  res.send(req.files);
-    //console.log(req.files);
-
-  /*  items={
-        "itemname":req.body.itemname,
-        "itemno" : req.body.itemno,
-        "discription" :req.body.discription,
-        "price": req.body.itemprice,
-        "id" : Date.now()+"gne5cr5der",
-        "image":req.files[0]
-    }
-*/
-    //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
-   // console.log(items);
-    ///item is main key
     console.log(req.files[0].location);
     users.update({'email':req.params.id},{$set: {"profileimage":req.files[0].location}}, function( err,res, result ) {
         if ( err ) {throw err;}
@@ -127,7 +112,7 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
 })
 
 
-
+////// add more photos//
 
 router.post('/profile/upload/email/addmore/:id',upload.any(),function (req,res,next) {
 
@@ -150,7 +135,7 @@ router.post('/profile/upload/email/addmore/:id',upload.any(),function (req,res,n
 
 
 
-
+///////change shop status////
 
 
 router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,next) {
@@ -164,7 +149,6 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
             // res.send(result);
         }
     })
-  //  res.send(req.files[0]);
 
     res.send("status updated");
     res.end();
@@ -182,14 +166,11 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
 
 
 
-
+//// delete item ////
 
 
 router.get('/profile/email/:email/delete/:id',function(req, res,next) {
-      //  id9=req.params.id;
        id2=req.params.id;
-     //  console.log("deleted");
-    //   console.log(req.params.id);
 
        users.update({"email":req.params.email},
            { $pull: { item:{"id":id2}}},
@@ -213,35 +194,9 @@ router.get('/profile/email/:email/delete/:id',function(req, res,next) {
 
 });
 
-router.post('/profile/email/update/item/:id',function(req, res,next) {
-      itemname=req.body.item_name;
-      itemno=req.body.item_number;
-      discr=req.body.item_discription;
-      prc=req.body.item_price;
-      id2=req.body.item_id
 
-    users.update({"email":req.params.id,"item.id":id2},
-        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
-        true
-        ,function (err,res,result) {
-            if(err)res.send(err);
-            else{ console.log("updated done");
+//// update item
 
-                console.log(id2);
-            }
-
-
-        });
-
-
-
-    //res.send("deleted Successfully");
-    console.log("update Successfully");
-
-    res.send("updated");
-   res.end();
-
-});
 
 
 
@@ -275,35 +230,8 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
 
 });
 
-router.post('/profile/email/update/item/:id',function(req, res,next) {
-    itemname=req.body.item_name;
-    itemno=req.body.item_number;
-    discr=req.body.item_discription;
-    prc=req.body.item_price;
-    id2=req.body.item_id
 
-    users.update({"email":req.params.id,"item.id":id2},
-        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
-        true
-        ,function (err,res,result) {
-            if(err)res.send(err);
-            else{ console.log("updated done");
-
-                console.log(id2);
-            }
-
-
-        });
-
-
-
-    //res.send("deleted Successfully");
-    console.log("update Successfully");
-
-    res.send("updated");
-    res.end();
-
-});
+//// update contact
 
 
 router.post('/profile/email/update/contact/:id',function(req, res,next) {
@@ -333,6 +261,10 @@ router.post('/profile/email/update/contact/:id',function(req, res,next) {
     res.end();
 
 });
+
+
+///update title
+
 router.post('/profile/email/update/title/:id',function(req, res,next) {
     name = req.body.shopname;
     location = req.body.shoplocation;
