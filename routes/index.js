@@ -155,6 +155,24 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
 
 })
 
+//// update location
+router.post('/profile/upload/email/location/:id',function (req,res,next) {
+
+    //console.log(req.files[0]);
+    users.update({'email':req.params.id},{$set: {"lat":req.body.lat,"lng":req.body.lng}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+            // res.send(result);
+        }
+    })
+
+    res.send("status updated");
+    res.end();
+
+})
+
 
 
 
