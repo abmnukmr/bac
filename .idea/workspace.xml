@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c0da5d5-7f92-4517-a8b9-52f86c5a0321" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-    </list>
+    <list default="true" id="5c0da5d5-7f92-4517-a8b9-52f86c5a0321" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -64,8 +61,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="372" column="67" lean-forward="false" selection-start-line="372" selection-start-column="67" selection-end-line="372" selection-end-column="67" />
+            <state relative-caret-position="251">
+              <caret line="378" column="6" lean-forward="true" selection-start-line="378" selection-start-column="6" selection-end-line="378" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -393,12 +390,12 @@
       <workItem from="1488718442131" duration="2367000" />
       <workItem from="1488724508158" duration="2479000" />
       <workItem from="1488737359843" duration="687000" />
-      <workItem from="1488773059241" duration="1362000" />
+      <workItem from="1488773059241" duration="1535000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214030000" />
+    <option name="totallyTimeSpent" value="214203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="1" />
@@ -723,8 +720,8 @@
     <entry file="file://$PROJECT_DIR$/views/profil.pug" />
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="372" column="67" lean-forward="false" selection-start-line="372" selection-start-column="67" selection-end-line="372" selection-end-column="67" />
+        <state relative-caret-position="251">
+          <caret line="378" column="6" lean-forward="true" selection-start-line="378" selection-start-column="6" selection-end-line="378" selection-end-column="6" />
           <folding />
         </state>
       </provider>

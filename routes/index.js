@@ -370,7 +370,7 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
 
 
     router.get('/profile/:id', function (req, res, next) {
-        users.find({'email': req.params.id}).sort({"item.itemno":-1}, function (err, docs) {
+        users.find({'email': req.params.id}, function (err, docs) {
             if (err) console.log(err);
 
             else res.json(docs[0]);
