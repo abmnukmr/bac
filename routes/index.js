@@ -158,15 +158,27 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
 //// update location
 router.post('/profile/upload/email/location/:id',function (req,res,next) {
 
-    //console.log(req.files[0]);
     users.update({'email':req.params.id},{$set: {"lat":req.body.lat,"lng":req.body.lng}}, function( err,res, result ) {
         if ( err ) {throw err;}
 
         else {
             console.log("success");
-            // res.send(result);
         }
-    })
+    });
+
+    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.lat":req.body.lat,"location.$.lng":req.body.lng}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated location in search done");
+
+
+            }
+
+
+        });
+
+
 
     res.send("status updated");
     res.end();
