@@ -81,6 +81,20 @@ var upload = multer({
    })
 
 
+
+/// get all search data
+
+router.get('/search/all/shop', function (req, res, next) {
+    search.find({ "search": "gogolio"}, function (err, docs) {
+        if (err) console.log(err);
+
+        else console.log("successfully get");
+    })
+});
+
+
+
+
 //// send message
 
 
