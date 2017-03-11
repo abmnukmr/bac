@@ -108,6 +108,20 @@ router.post('/profile/upload/email/profilepic/:id',upload.any(),function (req,re
     })
     res.send(req.files[0]);
 
+    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.profileimage":req.files[0].location}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated profile in search done");
+
+
+            }
+
+
+        });
+
+
+
 
 })
 
@@ -150,8 +164,27 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
         }
     })
 
+    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.status":req.body.status}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated profile in search done");
+
+
+            }
+
+
+        });
+
+
+
     res.send("status updated");
     res.end();
+
+
+
+
+
 
 })
 
