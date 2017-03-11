@@ -88,7 +88,13 @@ router.get('/search/all/shop', function (req, res, next) {
     search.find({ "search": "gogolio"}, function (err, docs) {
         if (err) console.log(err);
 
-        else console.log("successfully get");
+        else {
+            console.log("successfully get");
+            console.log(docs);
+            res.json(docs[0])
+
+        }
+
     })
 });
 
