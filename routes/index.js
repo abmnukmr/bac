@@ -322,7 +322,23 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
 
         });
 
-    });
+    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.name":name,"location.$.address":location,"location.$.catagory":catagory}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated title done");
+
+
+            }
+
+
+        });
+
+
+
+
+
+});
 
 
 
