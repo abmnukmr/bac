@@ -171,6 +171,10 @@ router.post('/profile/upload/email/location/:id',function (req,res,next) {
     res.send("status updated");
     res.end();
 
+
+
+
+
 })
 
 
@@ -277,6 +281,21 @@ router.post('/profile/email/update/contact/:id',function(req, res,next) {
 
     res.send("updated");
     res.end();
+
+
+    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.phone":phone,"location.$.whatsapp":whatsapp}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated contact done");
+
+
+            }
+
+
+        });
+
+
 
 });
 
