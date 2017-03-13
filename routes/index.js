@@ -256,18 +256,6 @@ router.post('/profile/upload/email/status/phonevisible/:id',upload.any(),functio
         }
     })
 
-    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.status_phone":req.body.status}},false ,
-        true
-        ,function (err,res,result) {
-            if(err)res.send(err);
-            else{ console.log("updated profile in search done");
-
-
-            }
-
-
-        });
-
 
 
     res.send("status updated");
