@@ -247,7 +247,7 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
 router.post('/profile/upload/email/status/phonevisible/:id',upload.any(),function (req,res,next) {
 
     //console.log(req.files[0]);
-    users.update({'email':req.params.id},{$set: {"status_phone":req.body.status}}, function( err,res, result ) {
+    users.update({'email':req.params.id},{$set: {"status_phone":req.body.statuss}}, function( err,res, result ) {
         if ( err ) {throw err;}
 
         else {
