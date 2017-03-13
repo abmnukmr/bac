@@ -13,6 +13,8 @@ var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
 const db = require('monk')(URL)
 const users = db.get('profile')
 const search = db.get('search')
+const cred = db.get('user_detatils')
+
 
 
 
@@ -80,6 +82,37 @@ var upload = multer({
 
    })
 
+
+///user profile create
+router.post('create/user',function (req,res,next) {
+
+
+    var name=req.body.name
+    var  email=req.body.email
+    var  phone=req.body.phone
+    var  phone_uid=req.body.phone_uid
+    var date=req.body.date
+    var otp='0000'
+    var lat=req.body.lat
+    var lng=req.body.lng
+
+
+
+
+
+    console.log(req.files[0].location);
+    cred.insert({'email': req.params.id}, {$set: {"profileimage": req.files[0].location}}, function (err, res, result) {
+        if (err) {
+            throw err;
+        }
+
+        else {
+            console.log("success");
+            // res.send(result);
+        }
+    })
+
+})
 
 
 /// get all search data
@@ -207,6 +240,46 @@ router.post('/profile/upload/email/status/:id',upload.any(),function (req,res,ne
 
 
 })
+
+
+////// phone no visiblity
+
+router.post('/profile/upload/email/status/phonevisible/:id',upload.any(),function (req,res,next) {
+
+    //console.log(req.files[0]);
+    users.update({'email':req.params.id},{$set: {"status_phone":req.body.status}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+            // res.send(result);
+        }
+    })
+
+    search.update({"search":"gogolio","location.email":req.params.id},{$set:{"location.$.status_phone":req.body.status}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated profile in search done");
+
+
+            }
+
+
+        });
+
+
+
+    res.send("status updated");
+    res.end();
+
+
+
+
+
+
+})
+
 
 //// update location
 router.post('/profile/upload/email/location/:id',function (req,res,next) {
@@ -338,6 +411,7 @@ router.post('/profile/email/update/contact/:id',function(req, res,next) {
 
 
         });
+
 
 
 
