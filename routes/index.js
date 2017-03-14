@@ -270,7 +270,7 @@ router.post('/profile/upload/email/status/phonevisible/:id',upload.any(),functio
 
 
 //////like a shop
-
+/*
 router.post('/profile/like/shop/:id',function (req,res,next) {
 
     emailfav={
@@ -363,6 +363,7 @@ router.get('/profile/like/shop/:id',function (req,res,next) {
 
 })
 
+*/
 
 
 
