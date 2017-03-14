@@ -323,7 +323,7 @@ router.post('/profile/like/shop/:id',function (req,res,next) {
 /////unlike a shop
 
 
-router.get('/profile/like/shop/:id',function (req,res,next) {
+router.post('/profile/dislike/shop/:id',function (req,res,next) {
 
   ///////user email
         emaildelete=req.body.useremail
