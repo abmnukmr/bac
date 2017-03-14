@@ -320,7 +320,8 @@ router.post('/profile/like/shop/:id',function (req,res,next) {
 
 })
 
-
+*/
+/*
 /////unlike a shop
 
 
@@ -352,8 +353,8 @@ router.get('/profile/like/shop/:id',function (req,res,next) {
 
         });
 
-
-
+*/
+/*
     res.send("done deleted");
     res.end();
 
