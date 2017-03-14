@@ -270,7 +270,6 @@ router.post('/profile/upload/email/status/phonevisible/:id',upload.any(),functio
 
 
 //////like a shop
-/*
 router.post('/profile/like/shop/:id',function (req,res,next) {
 
     emailfav={
@@ -320,8 +319,7 @@ router.post('/profile/like/shop/:id',function (req,res,next) {
 
 })
 
-*/
-/*
+
 /////unlike a shop
 
 
@@ -353,8 +351,6 @@ router.get('/profile/like/shop/:id',function (req,res,next) {
 
         });
 
-*/
-/*
     res.send("done deleted");
     res.end();
 
@@ -364,7 +360,6 @@ router.get('/profile/like/shop/:id',function (req,res,next) {
 
 })
 
-*/
 
 
 
