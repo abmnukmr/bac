@@ -269,6 +269,110 @@ router.post('/profile/upload/email/status/phonevisible/:id',upload.any(),functio
 })
 
 
+//////like a shop
+
+router.post('/profile/like/shop/:id',function (req,res,next) {
+
+    emailfav={
+        "email":req.body.useremail
+    }
+    users.update({'email':req.params.id},{$push: {"fav":emailfav}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+        }
+    });
+
+
+    liked={
+
+        "name": req.body.name,
+        "profileimage":req.body.profileimage,
+        "catagory": req.body.catagory,
+        "email": req.params.id,
+        "status": req.body.status,
+        "id":new Date()
+
+    }
+    userid=req.body.useremail
+
+    cred.update({"email":userid},{$push:{"fav":liked }},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated location in search done");
+
+
+            }
+
+
+        });
+
+
+
+    res.send("status updated");
+    res.end();
+
+
+
+
+
+})
+
+
+/////unlike a shop
+
+
+router.get('/profile/like/shop/:id',function (req,res,next) {
+
+  ///////user email
+        emaildelete=req.body.useremail
+
+    users.update({'email':req.params.id},{$pull: {"fav":{"email": emaildelete}}}, function( err,res, result ) {
+        if ( err ) {throw err;}
+
+        else {
+            console.log("success");
+        }
+    });
+
+
+
+
+    cred.update({"email":req.body.useremail},{$pull:{"fav":{"email":req.params.id} }},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated location in search done");
+
+
+            }
+
+
+        });
+
+
+
+    res.send("done deleted");
+    res.end();
+
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
 //// update location
 router.post('/profile/upload/email/location/:id',function (req,res,next) {
 
