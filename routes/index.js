@@ -56,11 +56,6 @@ var upload = multer({
 
   //  res.send(req.files);
     //console.log(req.files);
-       var dateobj= new Date.now() ;
-       var month = dateobj.getMonth() + 1;
-       var day = dateobj.getDate() ;
-       var year = dateobj.getFullYear();
-
 
        items={
         "itemname":req.body.itemname,
@@ -683,10 +678,6 @@ router.get('/favourite/user/:id', function (req, res, next) {
 router.post('/favourite/user/scan/:id', function (req, res, next) {
 
 
-    var dateobj= new Date.now();
-    var month = dateobj.getMonth() + 1;
-    var day = dateobj.getDate() ;
-    var year = dateobj.getFullYear();
 
     detail={
              "name":req.body.name,
