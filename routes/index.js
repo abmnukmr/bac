@@ -702,6 +702,16 @@ router.post('/favourite/user/scan/:id', function (req, res, next) {
         else res.json(docs[0]);
     })
 });
+router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
+
+     id4=req.body.iddel
+
+    cred.update({'email': req.params.id},{$pull:{scan:{"id":id4}}}, function (err, docs) {
+        if (err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+});
 
 
 
