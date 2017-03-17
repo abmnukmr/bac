@@ -67,7 +67,7 @@ var upload = multer({
         "itemno" : req.body.itemno,
         "discription" :req.body.discription,
         "price": req.body.itemprice,
-        "id" : year+month+day+"gne5cr5der",
+        "id" : Date.now()+"gne5cr5der",
         "image":req.files
     }
 
@@ -693,7 +693,7 @@ router.post('/favourite/user/scan/:id', function (req, res, next) {
              "profileimage": req.body.profileimage,
              "catagory": req.body.catagory,
              "email": req.body.email,
-             "id":year+month+day
+             "id":Date.now()
 
            }
     cred.update({'email': req.params.id},{$push:{scan:detail}}, function (err, docs) {
