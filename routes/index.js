@@ -678,7 +678,7 @@ router.post('/favourite/user/scan/:id', function (req, res, next) {
              "profileimage": req.body.profileimage,
              "catagory": req.body.catagory,
              "email": req.body.email,
-            "id":Date.now()
+             "id":Date.now()
 
            }
     cred.update({'email': req.params.id},{$push:{scan:detail}}, function (err, docs) {
