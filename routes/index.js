@@ -56,13 +56,18 @@ var upload = multer({
 
   //  res.send(req.files);
     //console.log(req.files);
+       var dateobj= new Date() ;
+       var month = dateobj.getMonth() + 1;
+       var day = dateobj.getDate() ;
+       var year = dateobj.getFullYear();
 
-    items={
+
+       items={
         "itemname":req.body.itemname,
         "itemno" : req.body.itemno,
         "discription" :req.body.discription,
         "price": req.body.itemprice,
-        "id" : Date.now()+"gne5cr5der",
+        "id" : year+month+day+"gne5cr5der",
         "image":req.files
     }
 
@@ -283,6 +288,11 @@ router.post('/profile/like/shop/:id',function (req,res,next) {
         }
     });
 
+    var dateobj= new Date() ;
+    var month = dateobj.getMonth() + 1;
+    var day = dateobj.getDate() ;
+    var year = dateobj.getFullYear();
+
 
     liked={
 
@@ -291,7 +301,7 @@ router.post('/profile/like/shop/:id',function (req,res,next) {
         "catagory": req.body.catagory,
         "email": req.params.id,
         "status": req.body.status,
-        "id":new Date()
+        "id":year+month+day
 
     }
     userid=req.body.useremail
@@ -673,12 +683,17 @@ router.get('/favourite/user/:id', function (req, res, next) {
 router.post('/favourite/user/scan/:id', function (req, res, next) {
 
 
+    var dateobj= new Date() ;
+    var month = dateobj.getMonth() + 1;
+    var day = dateobj.getDate() ;
+    var year = dateobj.getFullYear();
+
     detail={
              "name":req.body.name,
              "profileimage": req.body.profileimage,
              "catagory": req.body.catagory,
              "email": req.body.email,
-             "id":Date.now()
+             "id":year+month+day
 
            }
     cred.update({'email': req.params.id},{$push:{scan:detail}}, function (err, docs) {
