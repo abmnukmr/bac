@@ -683,7 +683,7 @@ router.get('/favourite/user/:id', function (req, res, next) {
 router.post('/favourite/user/scan/:id', function (req, res, next) {
 
 
-    var dateobj= new Date();
+    var dateobj= new Date.now();
     var month = dateobj.getMonth() + 1;
     var day = dateobj.getDate() ;
     var year = dateobj.getFullYear();
