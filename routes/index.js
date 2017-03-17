@@ -658,4 +658,18 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
     });
 
 
-    module.exports = router;
+    ///////// get all favourate
+
+router.get('/favourite/user/:id', function (req, res, next) {
+    cred.find({'email': req.params.id}, function (err, docs) {
+        if (err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+});
+
+
+
+
+
+module.exports = router;
