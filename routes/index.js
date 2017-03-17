@@ -668,7 +668,24 @@ router.get('/favourite/user/:id', function (req, res, next) {
     })
 });
 
+////// post  scanned shop
 
+router.post('/favourite/user/scan/:id', function (req, res, next) {
+
+
+    detail={
+             "name":req.body.name,
+             "profileimage": req.body.profileimage,
+             "catagory": req.body.catagory,
+             "email": req.body.email,
+
+           }
+    cred.update({'email': req.params.id},{$push:{scan:detail}}, function (err, docs) {
+        if (err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+});
 
 
 
