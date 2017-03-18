@@ -612,7 +612,6 @@ router.post('/user/create/new', function (req, res, next) {
     var m=("0" + (d.getMonth() + 1)).slice(-2);
     var y=d.getFullYear();
     var d=("0" + (d.getDate() )).slice(-2);
-    var t=d.getTime();
     detail={
         "name":req.body.name,
         "phone": req.body.phone,
@@ -621,7 +620,6 @@ router.post('/user/create/new', function (req, res, next) {
         "email":req.body.email,
         "otp":req.body.otp,
         "date":y.toString()+m.toString()+d.toString(),
-        "time":t.toString(),
         "fav":[],
         "scan":[]
 
@@ -629,7 +627,7 @@ router.post('/user/create/new', function (req, res, next) {
     cred.insert(detail, function (err, docs) {
         if (err) console.log(err);
 
-        else res.json(docs[0]);
+        else res.send("successfully");
     })
 });
 router.get('/user/create/new', function (req, res, next) {
