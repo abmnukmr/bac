@@ -615,7 +615,7 @@ router.post('/user/create/new', function (req, res, next) {
     var t=d.getTime();
     detail={
         "name":req.body.name,
-        "phone": req.body.profileimage,
+        "phone": req.body.phone,
         "lat": req.body.lat,
         "lng": req.body.lng,
         "email":req.body.email,
