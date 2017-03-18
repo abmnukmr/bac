@@ -603,6 +603,62 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
 
     });
 
+
+//// create an user
+router.post('/user/create/new', function (req, res, next) {
+
+
+    var d=new Date();
+    var m=("0" + (d.getMonth() + 1)).slice(-2);
+    var y=d.getFullYear();
+    var d=("0" + (d.getDate() )).slice(-2);
+    var t=d.getTime();
+    detail={
+        "name":req.body.name,
+        "phone": req.body.profileimage,
+        "lat": req.body.lat,
+        "lng": req.body.lng,
+        "email":req.body.email,
+        "otp":req.body.otp,
+        "date":y.toString()+m.toString()+d.toString(),
+        "time":t.toString(),
+        "fav":[],
+        "scan":[]
+
+    }
+    cred.insert(detail, function (err, docs) {
+        if (err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+});
+
+
+
+//check date get
+/*
+router.get('/user/create/new', function (req, res, next) {
+
+     var d=new Date();
+     var m=("0" + (d.getMonth() + 1)).slice(-2);
+
+     var y=d.getFullYear();
+     var d=("0" + (d.getDate() )).slice(-2);
+console.log(y.toString()+m.toString()+d.toString());
+   res.send(y.toString()+m.toString()+d.toString());
+
+
+});
+
+*/
+
+
+
+
+
+
+
+
     /*
      users.find(function (err,data) {
      if(err) console.log(err);
