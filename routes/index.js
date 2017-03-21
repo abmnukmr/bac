@@ -15,7 +15,7 @@ const users = db.get('profile')
 const search = db.get('search')
 const cred = db.get('user_detatils')
 const addv=db.get('ad_final')
-
+const settings=db.get('settings')
 
 
 aws.config.loadFromPath('./config.json');
@@ -816,6 +816,9 @@ router.post('/favourite/user/scan/:id', function (req, res, next) {
         else res.json(docs[0]);
     })
 });
+
+
+
 router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
 
      id4=req.body.iddel
