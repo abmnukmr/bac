@@ -14,7 +14,7 @@ const db = require('monk')(URL)
 const users = db.get('profile')
 const search = db.get('search')
 const cred = db.get('user_detatils')
-
+const addv=db.get('ad_final')
 
 
 
@@ -605,6 +605,7 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
 
 
 //// create an user
+
 router.post('/user/create/new', function (req, res, next) {
 
 
@@ -630,6 +631,49 @@ router.post('/user/create/new', function (req, res, next) {
         else res.send("successfully");
     })
 });
+
+/////sendotp:-
+router.post('/user/create/otp/id:', function (req, res, next) {
+
+   otp=req.body.otp;
+   cred.update({"email":req.params.id},{$set:{"otp":otp}}, function (err, docs) {
+        if (err) console.log(err);
+
+        else res.send("successfully");
+    })
+});
+
+///get user profile
+
+router.get('/user/create/userprofile/id:', function (req, res, next) {
+
+   // otp=req.body.otp;
+    cred.find({"email":req.params.id}, function (err, docs) {
+        if (err) console.log(err);
+
+        else res.send("successfully");
+    })
+  });
+
+////get addvertisment
+
+router.get('/addver/all', function (req, res, next) {
+
+    // otp=req.body.otp;
+    addv.find(function (err, docs) {
+        if (err) console.log(err);
+
+        else res.send("successfully");
+    })
+});
+
+
+/////false
+
+
+
+
+
 router.get('/user/create/new', function (req, res, next) {
 
 
