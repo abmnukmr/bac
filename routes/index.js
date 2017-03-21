@@ -633,9 +633,9 @@ router.post('/user/create/new', function (req, res, next) {
 });
 
 /////sendotp:-
-router.post('/user/create/otp/id:', function (req, res, next) {
+router.post('/user/create/otp/:id', function (req, res, next) {
 
-   otp=req.body.otp;
+   var otp=req.body.otp;
    cred.update({"email":req.params.id},{$set:{"otp":otp}}, function (err, docs) {
         if (err) console.log(err);
 
