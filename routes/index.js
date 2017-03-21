@@ -643,17 +643,7 @@ router.post('/user/create/otp/id:', function (req, res, next) {
     })
 });
 
-///get user profile
 
-router.get('/user/create/userprofile/id:', function (req, res, next) {
-
-   // otp=req.body.otp;
-    cred.find({"email":req.params.id}, function (err, docs) {
-        if (err) console.log(err);
-
-        else res.send("successfully");
-    })
-  });
 
 ////get addvertisment
 
