@@ -636,7 +636,8 @@ router.post('/user/create/new', function (req, res, next) {
 router.post('/user/create/otp/:id', function (req, res, next) {
 
    var otp=req.body.otp;
-   cred.update({"email":req.params.id},{$set:{"otp":otp}}, function (err, docs) {
+   var phone=req.body.phone;
+   cred.update({"email":req.params.id},{$set:{"otp":otp,"phone":phone}}, function (err, docs) {
         if (err) console.log(err);
 
         else{ res.json(docs[0]);
