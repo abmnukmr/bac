@@ -780,7 +780,7 @@ router.get('/delete/shop/:id',function (req,res,next) {
         else res.json(docs[0]);
     });
 
-    search.update({"search":"gogolio"},{$pull:{"email":req.params.id}},false ,
+    search.update({"search":"gogolio"},{$pull:{"location":{"email":req.params.id}}},false ,
         true
         ,function (err,res,result) {
             if(err)res.send(err);
