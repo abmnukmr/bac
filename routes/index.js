@@ -653,8 +653,10 @@ router.get('/addver/all', function (req, res, next) {
     addv.find(function (err, docs) {
         if (err) console.log(err);
 
-        else res.send("successfully");
+        else res.json(docs[0]);
+
     })
+    res.send("successfully");
 });
 
 
