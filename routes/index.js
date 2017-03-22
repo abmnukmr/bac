@@ -701,41 +701,11 @@ router.get('/user/create/new', function (req, res, next) {
 
 
 
-//check date get
-/*
-router.get('/user/create/new', function (req, res, next) {
-
-     var d=new Date();
-     var m=("0" + (d.getMonth() + 1)).slice(-2);
-
-     var y=d.getFullYear();
-     var d=("0" + (d.getDate() )).slice(-2);
-console.log(y.toString()+m.toString()+d.toString());
-   res.send(y.toString()+m.toString()+d.toString());
-
-
-});
-
-*/
 
 
 
 
-
-
-
-
-    /*
-     users.find(function (err,data) {
-     if(err) console.log(err);
-     console.log(data);
-
-     })
-     */
-
-
-
-
+     /// add a shop
      router.post('/profile/shop/add/:id', function(req, res, next) {
 
 
@@ -764,22 +734,70 @@ console.log(y.toString()+m.toString()+d.toString());
          "item":[]
 
      }
+
+    sear={
+        "name": req.body.name,
+        "address": req.body.address,
+        "phone": req.body.phone,
+        "profileimage": "http://cache3.asset-cache.net/xc/470259759.jpg?v=2&c=IWSAsset&k=2&d=_VHJK9wJYZHoCONxXGGQrSFCmgH-_LMXYoxZwqsEeoA1",
+        "lat": req.body.lat,
+        "lng": req.body.lng,
+        "email": req.params.id,
+        "catagory": req.body.catagory,
+        "visits": "2",
+        "status": "true",
+
+    }
      users.insert(shop,function (err,docs) {
      if(err) console.log(err);
 
      else res.json(docs[0]);
      })
+         search.update({"search":"gogolio"},{$push:{"location":sear}},false ,
+             true
+             ,function (err,res,result) {
+                 if(err)res.send(err);
+                 else{ console.log("updated title done");
+
+
+                 }
+
+
+             });
+
+
+
      });
+
+
+
+
+/////deleteshop
+///delete a shop
+router.get('/delete/shop/:id',function (req,res,next) {
+    users.remove({"email":req.params.id},function (err,docs) {
+        if(err) console.log(err);
+
+        else res.json(docs[0]);
+    });
+
+
+})
+
 
 ////////////get shop profile
 
-    router.get('/profile/:id', function (req, res, next) {
+  router.get('/profile/:id', function (req, res, next) {
         users.find({'email': req.params.id}, function (err, docs) {
             if (err) console.log(err);
 
             else res.json(docs[0]);
         })
     });
+
+    ///
+
+
     /*
      router.get('/:id', function(req, res, next) {
      users.insert({'email':req.params.id },function (err) {
