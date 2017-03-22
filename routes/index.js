@@ -734,20 +734,34 @@ console.log(y.toString()+m.toString()+d.toString());
      */
 
 
-    /*
 
-     router.post('/profile/add/:id', function(req, res, next) {
-     var shop={
-     "name": req.body.name,
-     "address": req.body.address,
-     "whatsapp": req.body.whatsapp,
-     "phone": req.body.phone,
-     "lat": req.body.lat,
-     "lng": req.body.lng,
-     "email": req.body.email,
-     "discription": req.body.discription,
-     "folowers": "2",
-     "status": "true",
+
+     router.post('/profile/shop/add/:id', function(req, res, next) {
+
+
+         var d=new Date();
+         var m=("0" + (d.getMonth() + 1)).slice(-2);
+         var y=d.getFullYear();
+         var d=("0" + (d.getDate() )).slice(-2);
+
+
+         var shop={
+
+         "name": req.body.name,
+         "address": req.body.address,
+         "whatsapp": req.body.whats,
+         "phone": req.body.phone,
+         "profileimage": "http://cache3.asset-cache.net/xc/470259759.jpg?v=2&c=IWSAsset&k=2&d=_VHJK9wJYZHoCONxXGGQrSFCmgH-_LMXYoxZwqsEeoA1",
+         "lat": req.body.lat,
+         "lng": req.body.lng,
+         "email": req.params.id,
+             "date":y.toString()+m.toString()+d.toString(),
+         "discription": req.body.discription,
+         "catagory": req.body.catagory,
+         "visits": "2",
+         "status": "true",
+         "fav":[],
+         "item":[]
 
      }
      users.insert(shop,function (err,docs) {
@@ -756,8 +770,8 @@ console.log(y.toString()+m.toString()+d.toString());
      else res.json(docs[0]);
      })
      });
-     */
 
+////////////get shop profile
 
     router.get('/profile/:id', function (req, res, next) {
         users.find({'email': req.params.id}, function (err, docs) {
