@@ -758,8 +758,6 @@ router.get('/user/create/new', function (req, res, next) {
              ,function (err,res,result) {
                  if(err)res.send(err);
                  else{ console.log("updated title done");
-
-
                  }
 
 
@@ -780,6 +778,17 @@ router.get('/delete/shop/:id',function (req,res,next) {
 
         else res.json(docs[0]);
     });
+
+    search.update({"search":"gogolio"},{$pull:{"email":req.params.id}},false ,
+        true
+        ,function (err,res,result) {
+            if(err)res.send(err);
+            else{ console.log("updated title done");
+            }
+
+
+        });
+
 
 
 })
