@@ -639,8 +639,9 @@ router.post('/user/create/otp/:id', function (req, res, next) {
    cred.update({"email":req.params.id},{$set:{"otp":otp}}, function (err, docs) {
         if (err) console.log(err);
 
-        else res.send("successfully");
+        else res.json(docs[0]);
     })
+    res.send("successfully");
 });
 
 
