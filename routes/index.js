@@ -729,7 +729,7 @@ router.get('/user/create/new', function (req, res, next) {
          "discription": req.body.discription,
          "catagory": req.body.catagory,
          "visits": "2",
-
+          "device":req.body.device,
          "status": "true",
          "fav":[],
          "item":[]
