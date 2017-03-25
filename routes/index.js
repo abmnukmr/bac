@@ -657,13 +657,16 @@ router.post('/user/create/otp/:id', function (req, res, next) {
 router.get('/addver/all', function (req, res, next) {
 
     // otp=req.body.otp;
-    addv.find(function (err, docs) {
+    addv.find({"advr":"cool"},function (err, docs) {
         if (err) console.log(err);
 
-        else res.json(docs[0]);
+        else {
+            res.json(docs[0]);
+             console.log(docs[0]);
+        }
 
     })
-    res.send("successfully");
+
 });
 
 
