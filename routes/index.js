@@ -16,6 +16,7 @@ const search = db.get('search')
 const cred = db.get('user_detatils')
 const addv=db.get('ad_final')
 const settings=db.get('settings')
+const notification=db.get('notification')
 
 
 aws.config.loadFromPath('./config.json');
@@ -410,7 +411,16 @@ router.post('/profile/upload/email/location/:id',function (req,res,next) {
 })
 
 
+///// get all notifiaction
+router.get('/public/notification',function (req,res,next) {
+     notification.find({"note":"notification"},function (err,docs) {
+        if(err) console.log(err)
+         else {
+            res.json(docs[0])
+        }
+     })
 
+})
 
 
 
