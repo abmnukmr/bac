@@ -738,6 +738,7 @@ router.get('/user/create/new', function (req, res, next) {
          "lat": req.body.lat,
          "lng": req.body.lng,
          "email": req.params.id,
+             "status_phone":"true",
              "date":y.toString()+m.toString()+d.toString(),
          "discription": req.body.discription,
          "catagory": req.body.catagory,
