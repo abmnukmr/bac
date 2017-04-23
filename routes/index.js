@@ -549,10 +549,10 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
     name = req.body.shopname;
     location = req.body.shoplocation;
      catagory=req.body.shopcata;
-    // id2=req.body.item_id
+    linki=req.body.link;
 
     users.update({"email": req.params.id},
-        {$set: {"name": name, "address": location,"catagory":catagory}}, false,
+        {$set: {"name": name, "address": location,"catagory":catagory,"link":linki}}, false,
         true
         , function (err, res, result) {
             if (err) res.send(err);
