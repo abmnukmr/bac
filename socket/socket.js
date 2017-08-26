@@ -47,6 +47,13 @@ function socket(io) {
 
             console.log(msg);
 
+            socket.on('disconnect', function () {
+                socket.removeAllListeners('getmessage');
+                //socket.removeAllListeners('socketjoined');
+                socket.removeAllListeners('message');
+                //socket.removeAllListeners('typing');
+                //io.removeAllListeners('connection');
+            });
         })
 
 
@@ -54,13 +61,6 @@ function socket(io) {
 
     });
 
-    socket.on('disconnect', function () {
-        socket.removeAllListeners('getmessage');
-        socket.removeAllListeners('socketjoined');
-        socket.removeAllListeners('message');
-        socket.removeAllListeners('typing');
-        io.removeAllListeners('connection');
-    });
 
 
 }
