@@ -7,7 +7,7 @@
 function socket(io) {
 
 
-    io.on('connection',function (socket) {
+    io.once('connection',function (socket) {
         console.log("A user is now connected ?"+ socket.id);
         socket.on('getmessage',function (msg) {
             var data={
