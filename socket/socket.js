@@ -57,7 +57,6 @@ function socket(io) {
             socket.removeAllListeners('socketjoined');
             socket.removeAllListeners('message');
             socket.removeAllListeners('typing');
-            io.removeAllListeners('connection');
         });
 
 
