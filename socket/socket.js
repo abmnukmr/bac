@@ -29,7 +29,7 @@ function socket(io) {
 
             //  io.sockets.in(data.email).emit('message', {msg: data.message});
             //console.log(data.email);
-            socket.in(msg.email).emit('message', msg)
+            io.to(msg.email).emit('message', msg)
 
             console.log(msg);
 
@@ -50,13 +50,6 @@ function socket(io) {
 
         })
 
-        socket.on('disconnect', function () {
-            socket.removeAllListeners('getmessage');
-            socket.removeAllListeners('socketjoined');
-            socket.removeAllListeners('message');
-            socket.removeAllListeners('typing');
-           // io.removeAllListeners('connection');
-        });
 
 
 
