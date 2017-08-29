@@ -50,6 +50,12 @@ function socket(io) {
 
         })
 
+        socket.on('disconnected', function() {
+
+
+            io.close();
+        });
+
 
 
 
