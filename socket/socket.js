@@ -52,6 +52,10 @@ function socket(io) {
             });
         })
 
+        socket.on('end', function (){
+            socket.disconnect(0);
+        });
+
 
 
 
