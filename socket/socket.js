@@ -52,10 +52,13 @@ function socket(io) {
             });
         })
 
-        socket.on('end', function (){
-            socket.disconnect(0);
+        socket.on('disconnect', function () {
+            socket.removeAllListeners('getmessage');
+            socket.removeAllListeners('socketjoined');
+            socket.removeAllListeners('message');
+            socket.removeAllListeners('typing');
+            io.removeAllListeners('connection');
         });
-
 
 
 
