@@ -47,9 +47,7 @@ function socket(io) {
 
             console.log(msg);
 
-            socket.on('disconnect', function () {
 
-            });
         })
 
         socket.on('disconnect', function () {
