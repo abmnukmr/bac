@@ -52,6 +52,8 @@ function socket(io) {
 
         socket.on('disconnected', function() {
 
+            socket.emit("closed","closed")
+
 
         });
 
