@@ -51,8 +51,8 @@
       <file leaf-file-name="socket.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket/socket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="31" />
+            <state relative-caret-position="267">
+              <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc;n#socket#0" expanded="false" />
               </folding>
@@ -502,12 +502,12 @@
       <workItem from="1492986991986" duration="137000" />
       <workItem from="1502563487142" duration="692000" />
       <workItem from="1503750228168" duration="3586000" />
-      <workItem from="1504005848142" duration="8118000" />
+      <workItem from="1504005848142" duration="8247000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359002000" />
+    <option name="totallyTimeSpent" value="359131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="700" extended-state="0" />
@@ -865,8 +865,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket/socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="31" />
+        <state relative-caret-position="267">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
           <folding>
             <element signature="n#!!doc;n#socket#0" expanded="false" />
           </folding>
