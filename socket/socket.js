@@ -21,7 +21,7 @@ function socket(io) {
             socket.join(room);
 
         })
-        socket.on('message', function (msg) {
+        socket.on('gettomessage', function (msg) {
             /// var data= {
             //   user:msg.user,
             ///  user_naem:set_msg.username
