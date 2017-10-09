@@ -29,7 +29,7 @@ function socket(io) {
 
             //  io.sockets.in(data.email).emit('message', {msg: data.message});
             //console.log(data.email);
-            io.to(msg.email).emit('gettomessage', msg)
+            io.of('/'+msg.email).to(msg.email).emit('gettomessage', msg)
 
             console.log(msg);
 
