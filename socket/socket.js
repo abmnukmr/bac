@@ -43,7 +43,7 @@ function socket(io) {
 
             //  io.sockets.in(data.email).emit('message', {msg: data.message});
             //console.log(data.email);
-            io.to(msg.email2).emit('typingrec', msg)
+            io.emit('typingrec', msg)
 
             console.log(msg);
 
