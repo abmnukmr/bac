@@ -4,7 +4,23 @@
 
 
 
+var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
+const db = require('monk')(URL)
+const users = db.get('profile')
+const search = db.get('search')
+const cred = db.get('user_detatils')
+const addv=db.get('ad_final')
+const settings=db.get('settings')
+const notification=db.get('notification')
+
+
+
+
+
 function socket(io) {
+
+
+    var online=[];
 
 
     io.on('connection',function (socket) {
@@ -19,9 +35,20 @@ function socket(io) {
         socket.on('socketjoined',function (room) {
             console.log("user joined",room)
             socket.join(room);
+            online.push(room)
 
         })
         socket.on('gettomessage', function (msg) {
+
+
+            console.log(socket.adapter.rooms[msg.email].length);
+
+             if(socket.adapter.rooms[msg.email].length ==1){
+
+                 console.log("Send Notification");
+             }
+
+
             /// var data= {
             //   user:msg.user,
             ///  user_naem:set_msg.username
@@ -50,6 +77,12 @@ function socket(io) {
 
         })
 
+
+
+
+
+
+
         socket.on('disconnected', function() {
 
             socket.emit("closed","closed")
@@ -60,7 +93,14 @@ function socket(io) {
 
 
 
+
+
+
+
     });
+
+
+
 
 
 
