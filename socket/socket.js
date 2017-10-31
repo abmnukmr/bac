@@ -40,8 +40,18 @@ function socket(io) {
         })
         socket.on('gettomessage', function (msg) {
 
+          var t=socket.adapter.rooms[msg.email];
+            console.log(socket.adapter.rooms[msg.email]);
 
-           // console.log(socket.adapter.rooms[msg.email]);
+             if(t){
+
+                 io.to(msg.email).to(msg.sender_mail).emit('gettomessage', msg)
+
+             }
+             else {
+                 io.to(msg.sender_mail).emit('gettomessage', msg)
+                 console.log("Send Notification")
+             }
 
             /// var data= {
             //   user:msg.user,
@@ -50,7 +60,6 @@ function socket(io) {
 
             //  io.sockets.in(data.email).emit('message', {msg: data.message});
             //console.log(data.email);
-            io.to(msg.email).emit('gettomessage', msg)
 
             console.log(msg);
 
