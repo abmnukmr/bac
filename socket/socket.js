@@ -41,13 +41,13 @@ function socket(io) {
         socket.on('gettomessage', function (msg) {
 
 
-            console.log(socket.adapter.rooms[msg.email].length);
+          /*  console.log(socket.adapter.rooms[msg.email].length);
 
              if(socket.adapter.rooms[msg.email].length ==1){
 
                  console.log("Send Notification");
              }
-
+*/
 
             /// var data= {
             //   user:msg.user,
@@ -56,7 +56,7 @@ function socket(io) {
 
             //  io.sockets.in(data.email).emit('message', {msg: data.message});
             //console.log(data.email);
-            io.to(msg.email).emit('gettomessage', msg)
+            io.in(msg.email).emit('gettomessage', msg)
 
             console.log(msg);
 
