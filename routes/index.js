@@ -909,7 +909,7 @@ router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
 });
 
 
-//// push notification token
+//// push notification tokenb
 
 router.post('/user/noti/token/:id',function (req,res,next) {
 
