@@ -619,28 +619,39 @@ router.post('/profile/email/update/title/:id',function(req, res,next) {
 router.post('/user/create/new', function (req, res, next) {
 
 
-    var d=new Date();
-    var m=("0" + (d.getMonth() + 1)).slice(-2);
-    var y=d.getFullYear();
-    var d=("0" + (d.getDate() )).slice(-2);
-    detail={
-        "name":req.body.name,
-        "phone": req.body.phone,
-        "lat": req.body.lat,
-        "lng": req.body.lng,
-        "email":req.body.email,
-        "otp":req.body.otp,
-        "date":y.toString()+m.toString()+d.toString(),
-        "fav":[],
-        "scan":[]
+    cred.find({"email": req.params.email}, function (err, docs) {
 
-    }
-    cred.insert(detail, function (err, docs) {
-        if (err) console.log(err);
+        // res.json(docs.length)
 
-        else res.send("successfully");
-    })
-});
+        if (docs.length < 1) {
+            var d = new Date();
+            var m = ("0" + (d.getMonth() + 1)).slice(-2);
+            var y = d.getFullYear();
+            var d = ("0" + (d.getDate() )).slice(-2);
+            detail = {
+                "name": req.body.name,
+                "phone": req.body.phone,
+                "lat": req.body.lat,
+                "lng": req.body.lng,
+                "email": req.body.email,
+                "otp": req.body.otp,
+                "date": y.toString() + m.toString() + d.toString(),
+                "fav": [],
+                "scan": []
+
+            }
+            cred.insert(detail, function (err, docs) {
+                if (err) console.log(err);
+
+                else res.send("successfully");
+            })
+        }
+        else {
+            res.send("error")
+        }
+
+    });
+})
 
 /////sendotp:-
 router.post('/user/create/otp/:id', function (req, res, next) {
@@ -722,62 +733,74 @@ router.get('/user/create/new', function (req, res, next) {
      router.post('/profile/shop/add/:id', function(req, res, next) {
 
 
-         var d=new Date();
-         var m=("0" + (d.getMonth() + 1)).slice(-2);
-         var y=d.getFullYear();
-         var d=("0" + (d.getDate() )).slice(-2);
+
+         users.find({"email":req.params.email},function (err,docs) {
+
+             // res.json(docs.length)
+
+             if(docs.length<1) {
+
+                 var d = new Date();
+                 var m = ("0" + (d.getMonth() + 1)).slice(-2);
+                 var y = d.getFullYear();
+                 var d = ("0" + (d.getDate() )).slice(-2);
 
 
-         var shop={
+                 var shop = {
 
-         "name": req.body.name,
-         "address": req.body.address,
-         "whatsapp": req.body.whats,
-         "phone": req.body.phone,
-         "profileimage": "http://cache3.asset-cache.net/xc/470259759.jpg?v=2&c=IWSAsset&k=2&d=_VHJK9wJYZHoCONxXGGQrSFCmgH-_LMXYoxZwqsEeoA1",
-         "lat": req.body.lat,
-         "lng": req.body.lng,
-         "email": req.params.id,
-             "status_phone":"true",
-             "date":y.toString()+m.toString()+d.toString(),
-         "discription": req.body.discription,
-         "catagory": req.body.catagory,
-         "visits": "2",
-          "device":req.body.device,
-         "status": "true",
-         "fav":[],
-         "item":[]
+                     "name": req.body.name,
+                     "address": req.body.address,
+                     "whatsapp": req.body.whats,
+                     "phone": req.body.phone,
+                     "profileimage": "http://cache3.asset-cache.net/xc/470259759.jpg?v=2&c=IWSAsset&k=2&d=_VHJK9wJYZHoCONxXGGQrSFCmgH-_LMXYoxZwqsEeoA1",
+                     "lat": req.body.lat,
+                     "lng": req.body.lng,
+                     "email": req.params.id,
+                     "status_phone": "true",
+                     "date": y.toString() + m.toString() + d.toString(),
+                     "discription": req.body.discription,
+                     "catagory": req.body.catagory,
+                     "visits": "2",
+                     "device": req.body.device,
+                     "status": "true",
+                     "fav": [],
+                     "item": []
 
-     }
-
-    sear={
-        "name": req.body.name,
-        "address": req.body.address,
-        "phone": req.body.phone,
-        "profileimage": "http://cache3.asset-cache.net/xc/470259759.jpg?v=2&c=IWSAsset&k=2&d=_VHJK9wJYZHoCONxXGGQrSFCmgH-_LMXYoxZwqsEeoA1",
-        "lat": req.body.lat,
-        "lng": req.body.lng,
-        "email": req.params.id,
-        "catagory": req.body.catagory,
-        "visits": "2",
-        "status": "true",
-
-    }
-     users.insert(shop,function (err,docs) {
-     if(err) console.log(err);
-
-     else res.json(docs[0]);
-     })
-         search.update({"search":"gogolio"},{$push:{"location":sear}},false ,
-             true
-             ,function (err,res,result) {
-                 if(err)res.send(err);
-                 else{ console.log("updated title done");
                  }
 
+                 sear = {
+                     "name": req.body.name,
+                     "address": req.body.address,
+                     "phone": req.body.phone,
+                     "profileimage": "http://cache3.asset-cache.net/xc/470259759.jpg?v=2&c=IWSAsset&k=2&d=_VHJK9wJYZHoCONxXGGQrSFCmgH-_LMXYoxZwqsEeoA1",
+                     "lat": req.body.lat,
+                     "lng": req.body.lng,
+                     "email": req.params.id,
+                     "catagory": req.body.catagory,
+                     "visits": "2",
+                     "status": "true",
 
-             });
+                 }
+                 users.insert(shop, function (err, docs) {
+                     if (err) console.log(err);
 
+                     else res.json(docs[0]);
+                 })
+                 search.update({"search": "gogolio"}, {$push: {"location": sear}}, false,
+                     true
+                     , function (err, res, result) {
+                         if (err) res.send(err);
+                         else {
+                             console.log("updated title done");
+                         }
+
+
+                     });
+             }else {
+
+                 res.send("error")
+             }
+         })
 
 
      });
@@ -884,6 +907,21 @@ router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
         else res.json(docs[0]);
     })
 });
+
+
+//// push notification token
+
+router.post('/user/noti/token/:id',function (req,res,next) {
+
+    var token=req.body.token
+  cred.update({'email': req.params.id},{$push:{token:token}},function (err, docs) {
+      if (err) console.log(err);
+
+      else res.json(docs[0]);
+  })
+})
+
+
 
 
 

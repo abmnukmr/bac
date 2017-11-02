@@ -49,7 +49,9 @@ function socket(io) {
 
              }
              else {
+                var token= users.find({"email":msg.email})
                  io.to(msg.sender_mail).emit('gettomessage', msg)
+                 this.triggernotification(msg.email,msg);
                  console.log("Send Notification")
              }
 
@@ -108,4 +110,40 @@ function socket(io) {
 
 
 }
+
+
+function triggernotification(email,msg){
+
+    var token= users.find({"email":email})
+
+    const FCM = require('fcm-node');
+// Replace these with your own values.
+    const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
+    const deviceID = token.token;
+    const fcm = new FCM(apiKey);
+
+    const message = {
+        to: deviceID,
+        data: {
+            title: msg.user_sender,
+            message: msg.message,
+            vibrationPattern: [2000, 1000, 500, 500]
+        }
+    };
+
+    fcm.send(message, function (err,response) {
+
+        if (err) {
+            console.log(err);
+            console.log("Something has gone wrong!");
+        } else {
+            console.log("Successfully sent with response: ", response);
+}
+});
+
+
+
+}
+
+
 module.exports = socket;
