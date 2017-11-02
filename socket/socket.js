@@ -114,7 +114,7 @@ function socket(io) {
 
 function triggernotification(email,msg){
 
-    var token= users.find({"email":email})
+    var token= cred.find({"email":email})
 
     const FCM = require('fcm-node');
 // Replace these with your own values.
