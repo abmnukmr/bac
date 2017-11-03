@@ -132,6 +132,8 @@ function triggernotification(email,msg){
                 to:tokenn,
                 data: {
                     title: msg.user_sender,
+                    text: msg.message,
+
                     body: msg.user_sender,
                     message: msg,
                     image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
