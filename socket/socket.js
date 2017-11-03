@@ -113,40 +113,45 @@ function socket(io) {
 
 
 function triggernotification(email,msg){
-     var tokenn;
+     var  tokenn;
     cred.find({"email":email},function (err, docs) {
         if (err) console.log(err);
         else {
             //res.json(docs[0]);
              tokenn=docs[0].token
               console.log(tokenn)
+
+
+            const FCM = require('fcm-node');
+// Replace these with your own values.
+            const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
+            const deviceID = tokenn
+            const fcm = new FCM(apiKey);
+
+            var message = {
+                to:tokenn,
+                data: {
+                    title: msg.user_sender,
+                    body: msg.user_sender,
+                    message: "hgkjgkjgkjgk",
+                    image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
+                    vibrationPattern: [2000, 1000, 500, 500]
+                }
+            };
+
+            fcm.send(message, function (err,response) {
+                console.log(tokenn + "fetchig right" + message +msg.message)
+                if (err) {
+                    console.log(err);
+                    console.log("Something has gone wrong!");
+                } else {
+                    console.log("Successfully sent with response: ", response);
+                }
+            });
+
+
         }
     })
-
-    const FCM = require('fcm-node');
-// Replace these with your own values.
-    const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
-    const deviceID = tokenn
-    const fcm = new FCM(apiKey);
-
-    const message = {
-        to:tokenn,
-        data: {
-            title: msg.user_sender,
-            message: msg.message,
-             vibrationPattern: [2000, 1000, 500, 500]
-        }
-    };
-
-    fcm.send(message, function (err,response) {
-       console.log(tokenn + "fetchig right")
-        if (err) {
-            console.log(err);
-            console.log("Something has gone wrong!");
-        } else {
-            console.log("Successfully sent with response: ", response);
-}
-});
 
 
 
