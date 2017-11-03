@@ -933,7 +933,7 @@ router.get('/user/noti/lastmessage/:id',function (req,res,next) {
 
 router.get('/tes/:id1/:id2',function (req,res,next) {
 
-  //  console.log(req.query.id1+req.query.id2)
+  //  console.log(req.query.id1+req.query.id2
       res.send(req.params.id1+req.params.id2)
 
 })
