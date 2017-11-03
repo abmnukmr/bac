@@ -133,7 +133,7 @@ function triggernotification(email,msg){
                 data: {
                     title: msg.user_sender,
                     body: msg.user_sender,
-                    message: "hgkjgkjgkjgk",
+                    message: msg,
                     image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
                     vibrationPattern: [2000, 1000, 500, 500]
                 }
