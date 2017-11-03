@@ -156,7 +156,7 @@ function triggernotification(email,msg){
                     cred.update({'email': email},{$set:{lastmessage:msg}},function (err, docs) {
                         if (err) console.log(err);
 
-                        else res.json(docs[0]);
+                        else console.log("sucess");
                     })
                     console.log("Successfully sent with response: ", response);
                 }
