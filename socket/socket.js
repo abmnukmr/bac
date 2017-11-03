@@ -130,11 +130,17 @@ function triggernotification(email,msg){
 
             var message = {
                 to:tokenn,
-                data: {
+
+              notification : {
                     title: msg.user_sender,
                     text: msg.message,
-                    icon: 'public/images/drawing-2_pink.png',
-                    body: msg.user_sender,
+                  body: msg.user_sender,
+
+                  icon: 'public/images/drawing-2_pink.png',
+
+              },
+
+                data: {
                     message: msg,
                     image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
                     vibrationPattern: [2000, 1000, 500, 500]
