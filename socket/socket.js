@@ -159,7 +159,7 @@ function triggernotification(email,msg){
                         console.log("Something has gone wrong!");
                 } else {
 
-                    cred.update({'email': email},{$set:{lastmessage:msg}},function (err, docs) {
+                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
                         if (err) console.log(err);
 
                         else{ console.log("sucess")};

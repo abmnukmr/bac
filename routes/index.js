@@ -923,6 +923,16 @@ router.post('/user/noti/token/:id',function (req,res,next) {
 
 
 
+router.post('/user/noti/lastmessage/:id',function (req,res,next) {
+
+    var token=req.body.token
+    cred.update({'email': req.params.id},{$set:{lastmessage:""}},function (err, docs) {
+        if (err) console.log(err);
+
+        else res.json(docs[0]);
+    })
+})
+
 
 
 module.exports = router;
