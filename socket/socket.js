@@ -154,6 +154,7 @@ function triggernotification(email,msg){
                         if (err) console.log(err);
 
                         else{ console.log("sucess")};
+                    })
 
                         console.log("Something has gone wrong!");
                 } else {
