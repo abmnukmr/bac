@@ -134,9 +134,9 @@ function triggernotification(email,msg){
               notification : {
                     title: msg.user_sender,
                     text: msg.message,
-                  body: msg.user_sender,
+                  body: msg.message,
 
-                  icon: '@mipmap/icon',
+                  icon: 'icon',
 
               },
 
