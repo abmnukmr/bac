@@ -131,19 +131,20 @@ function triggernotification(email,msg){
             var message = {
                 to:tokenn,
 
-              notification : {
-                  icon: 'icon',
-                  title: msg.user_sender,
-                  text: msg.message,
-                  body: msg.message,
 
 
-                  message: msg,
-                  image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-                  vibrationPattern: [2000, 1000, 500, 500]
-              },
+
+                data: {
+                    title: msg.user_sender,
+                    text: msg.message,
+                    body: msg.message,
+                    icon: 'icon',
 
 
+                    message: msg,
+                    image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
+                    vibrationPattern: [2000, 1000, 500, 500]
+                }
             };
 
             fcm.send(message, function (err,response) {
