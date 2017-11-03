@@ -77,8 +77,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="933" column="2" lean-forward="true" selection-start-line="933" selection-start-column="2" selection-end-line="933" selection-end-column="2" />
+            <state relative-caret-position="159">
+              <caret line="913" column="13" lean-forward="false" selection-start-line="913" selection-start-column="13" selection-end-line="913" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -126,8 +126,8 @@
         <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/socket/sendimg.js" />
         <option value="$PROJECT_DIR$/views/gy.html" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/socket/socket.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
   </component>
@@ -142,7 +142,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="709" />
@@ -448,15 +448,15 @@
       <workItem from="1509345417740" duration="1545000" />
       <workItem from="1509388029137" duration="8938000" />
       <workItem from="1509437598279" duration="11413000" />
-      <workItem from="1509639337691" duration="26907000" />
+      <workItem from="1509639337691" duration="28727000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="428424000" />
+    <option name="totallyTimeSpent" value="430244000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="709" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="709" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17871326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -762,8 +762,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="933" column="2" lean-forward="true" selection-start-line="933" selection-start-column="2" selection-end-line="933" selection-end-column="2" />
+        <state relative-caret-position="159">
+          <caret line="913" column="13" lean-forward="false" selection-start-line="913" selection-start-column="13" selection-end-line="913" selection-end-column="30" />
           <folding />
         </state>
       </provider>
