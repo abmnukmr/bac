@@ -150,7 +150,7 @@ function triggernotification(email,msg){
                 console.log(tokenn + "fetchig right" + message +msg.message)
                 if (err) {
                     console.log(err);
-                    cred.update({'email': email},{$set:{lastmessage:msg}},function (err, docs) {
+                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
                         if (err) console.log(err);
 
                         else{ console.log("sucess")};
