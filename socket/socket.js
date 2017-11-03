@@ -136,7 +136,7 @@ function triggernotification(email,msg){
                     text: msg.message,
                   body: msg.message,
 
-                  icon: 'icon',
+                  icon: 'icon.png',
 
               },
 
