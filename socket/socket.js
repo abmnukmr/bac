@@ -49,7 +49,7 @@ function socket(io) {
 
              }
              else {
-                var token= users.find({"email":msg.email})
+                //var token= users.find({"email":msg.email})
                  io.to(msg.sender_mail).emit('gettomessage', msg)
                  triggernotification(msg.email,msg);
                  console.log("Send Notification")
@@ -117,9 +117,9 @@ function triggernotification(email,msg){
     cred.find({"email":email},function (err, docs) {
         if (err) console.log(err);
         else {
-            res.json(docs[0]);
-             tokenn=res.json(docs[0]).token
-
+            //res.json(docs[0]);
+             tokenn=docs[0].token
+              console.log(tokenn)
         }
     })
 
@@ -130,16 +130,16 @@ function triggernotification(email,msg){
     const fcm = new FCM(apiKey);
 
     const message = {
-        to: deviceID,
+        to:tokenn,
         data: {
             title: msg.user_sender,
             message: msg.message,
-            vibrationPattern: [2000, 1000, 500, 500]
+             vibrationPattern: [2000, 1000, 500, 500]
         }
     };
 
     fcm.send(message, function (err,response) {
-
+       console.log(tokenn + "fetchig right")
         if (err) {
             console.log(err);
             console.log("Something has gone wrong!");
