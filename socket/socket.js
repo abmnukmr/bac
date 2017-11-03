@@ -152,6 +152,12 @@ function triggernotification(email,msg){
                     console.log(err);
                     console.log("Something has gone wrong!");
                 } else {
+
+                    cred.update({'email': req.params.id},{$set:{lastmessage:msg}},function (err, docs) {
+                        if (err) console.log(err);
+
+                        else res.json(docs[0]);
+                    })
                     console.log("Successfully sent with response: ", response);
                 }
             });
