@@ -136,7 +136,7 @@ function triggernotification(email,msg){
                     text: msg.message,
                   body: msg.user_sender,
 
-                  icon: '/public/images/ic_stat_drawing-2_pink.png',
+                  icon: 'icon',
 
               },
 
