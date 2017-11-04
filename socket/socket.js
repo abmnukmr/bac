@@ -37,6 +37,20 @@ function socket(io) {
             socket.join(room);
             online.push(room)
 
+
+        })
+
+        socket.on("checkonline",function (msgi) {
+            var t=socket.adapter.rooms[msg.email];
+            console.log(socket.adapter.rooms[msg.email]);
+
+            if(t) {
+              socket.emit("check", "Online")
+            }
+            else {
+                socket.emit("check", "Offline")
+            }
+
         })
         socket.on('gettomessage', function (msg) {
 
@@ -44,6 +58,7 @@ function socket(io) {
             console.log(socket.adapter.rooms[msg.email]);
 
              if(t){
+
 
                  io.to(msg.email).to(msg.sender_mail).emit('gettomessage', msg)
 
