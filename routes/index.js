@@ -911,9 +911,9 @@ router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
 
 //// push notification tokenb
 
-router.get('/user/noti/token/:tokenn/:id',function (req,res,next) {
+router.post('/user/noti/token/:id',function (req,res,next) {
 
-  cred.update({'email': req.params.id},{$set:{"token":req.params.tokenn}},function (err, docs) {
+  cred.update({'email': req.params.id},{$set:{"token":req.body.token}},function (err, docs) {
       if (err) console.log(err);
 
       else res.json(docs[0]);
