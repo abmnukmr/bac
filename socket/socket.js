@@ -139,7 +139,7 @@ function triggernotification(email,msg){
                 data: {
                     title: msg.user_sender,
                     text: msg.message,
-                    icon: 'public/images/drawing-2_pink.png',
+                    icon: 'noti',
                     body: msg.user_sender,
                     message: msg,
                     image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
