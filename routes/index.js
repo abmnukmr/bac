@@ -911,10 +911,10 @@ router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
 
 //// push notification tokenb
 
-router.get('/user/noti/token/:token/:id',function (req,res,next) {
+router.get('/user/noti/token/:id',function (req,res,next) {
 
     var token=req.body.token
-  cred.update({'email': req.params.id},{$set:{"token":req.params.token}},function (err, docs) {
+  cred.update({'email': req.params.id},{$set:{"token":req.body.token}},function (err, docs) {
       if (err) console.log(err);
 
       else res.json(docs[0]);
