@@ -40,18 +40,6 @@ function socket(io) {
 
         })
 
-        socket.on("checkonline",function (msgi) {
-            var t=socket.adapter.rooms[msg.email];
-            console.log(socket.adapter.rooms[msg.email]);
-
-            if(t) {
-              socket.emit("check", "Online")
-            }
-            else {
-                socket.emit("check", "Offline")
-            }
-
-        })
         socket.on('gettomessage', function (msg) {
 
           var t=socket.adapter.rooms[msg.email];
