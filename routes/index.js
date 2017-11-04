@@ -911,10 +911,10 @@ router.post('/favourite/user/scan/delete/:id', function (req, res, next) {
 
 //// push notification tokenb
 
-router.post('/user/noti/token/:id',function (req,res,next) {
+router.get('/user/noti/:token/:id',function (req,res,next) {
 
     var token=req.body.token
-  cred.update({'email': req.params.id},{$set:{"token":token}},function (err, docs) {
+  cred.update({'email': req.params.id},{$set:{"token":req.params.token}},function (err, docs) {
       if (err) console.log(err);
 
       else res.json(docs[0]);
@@ -931,6 +931,13 @@ router.get('/user/noti/lastmessage/:id',function (req,res,next) {
 
         else res.json(docs[0]);
     })
+})
+
+router.get('/tes/:id1/:id2',function (req,res,next) {
+
+  //  console.log(req.query.id1+req.query.id2)
+      res.send(req.params.id1+req.params.id2)
+
 })
 
 
