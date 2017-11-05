@@ -895,13 +895,19 @@ router.post('/user/noti/token/:id',function (req,res,next) {
 
 
 
-router.get('/user/noti/lastmessage/:id',function (req,res,next) {
+router.post('/user/noti/lastmessage/:id',function (req,res,next) {
 
-    cred.update({'email': req.params.id},{$set:{"lastmessage":[]}},function (err, docs) {
-        if (err) console.log(err);
+   var id2=req.body.tid;
+    cred.update({"email":req.params.email},{ $pull: { lastmessage:{"tid":id2}}},
+    { multi: true},function (err,res,result) {
+        if(err)res.send(err);
+        else{ console.log("deleted");
 
-        else res.json(docs[0]);
-    })
+            console.log(id2);
+        }
+
+
+    });
 })
 
 router.get('/tes/:id1/:id2',function (req,res,next) {
