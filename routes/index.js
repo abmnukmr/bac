@@ -697,33 +697,6 @@ router.get('/addver/all', function (req, res, next) {
 
 
 
-router.get('/user/create/new', function (req, res, next) {
-
-
-    var d=new Date();
-    var m=("0" + (d.getMonth() + 1)).slice(-2);
-    var y=d.getFullYear();
-    var d=("0" + (d.getDate() )).slice(-2);
-    detail={
-        "name":req.body.name,
-        "phone": req.body.phone,
-        "lat": req.body.lat,
-        "lng": req.body.lng,
-        "email":req.body.email,
-        "otp":req.body.otp,
-        "date":y.toString()+m.toString()+d.toString(),
-        "fav":[],
-        "scan":[]
-
-    }
-    cred.insert(detail, function (err, docs) {
-        if (err) console.log(err);
-
-        else res.send("succefully");
-    })
-});
-
-
 
 
 
