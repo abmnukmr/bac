@@ -895,9 +895,9 @@ router.post('/user/noti/token/:id',function (req,res,next) {
 
 
 
-router.post('/user/noti/lastmessage/:id',function (req,res,next) {
+router.get('/user/noti/lastmessage/:id/:tid',function (req,res,next) {
 
-   var id2=req.body.tid;
+   var id2=req.params.tid;
     cred.update({"email":req.params.email},{ $pull: { lastmessage:{"tid":id2}}},
     { multi: true},function (err,res,result) {
         if(err)res.send(err);
