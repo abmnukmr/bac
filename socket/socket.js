@@ -42,7 +42,6 @@ function socket(io) {
 
         socket.on('gettomessage', function (msg) {
 
-            socket.emit('chatlist', msg)
 
           var t=socket.adapter.rooms[msg.email];
             console.log(socket.adapter.rooms[msg.email]);
@@ -59,6 +58,8 @@ function socket(io) {
                  triggernotification(msg.email,msg);
                  console.log("Send Notification")
              }
+
+            socket.emit('chatlist', msg)
 
             /// var data= {
             //   user:msg.user,
