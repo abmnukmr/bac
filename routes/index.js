@@ -902,12 +902,14 @@ router.post('/user/noti/lastmessage/:id',function (req,res,next) {
     { multi: true},function (err,res,result) {
         if(err)res.send(err);
         else{ console.log("deleted");
-            res.send("deleted")
+            //res.end("deleted")
             console.log(id2);
         }
 
 
     });
+    res.send("")
+
 })
 
 router.get('/tes/:id1/:id2',function (req,res,next) {

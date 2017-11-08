@@ -42,6 +42,8 @@ function socket(io) {
 
         socket.on('gettomessage', function (msg) {
 
+            socket.emit('chatlist', msg)
+
           var t=socket.adapter.rooms[msg.email];
             console.log(socket.adapter.rooms[msg.email]);
 
