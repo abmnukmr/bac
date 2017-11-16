@@ -146,11 +146,11 @@ function triggernotification(email,msg){
                     body: msg.user_sender,
                     message: msg,
                     //image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-                  //  picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-                    //image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
+                    picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
+                    image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
                    // image-type: "circle",
-                    //vibrationPattern: [2000, 1000, 500, 500],
-                    //ledColor: [0, 0, 255, 0]
+                    vibrationPattern: [2000, 1000, 500, 500],
+                    ledColor: [0, 0, 255, 0]
                 }
             };
 
