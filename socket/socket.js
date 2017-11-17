@@ -145,11 +145,11 @@ function triggernotification(email,msg){
                 //icon: 'noti.png',
                 body: msg.message,
                 //message: msg,
-             picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-             image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
+            // picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
+             //image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
              // image-type: "circle",
-             vibrationPattern: [2000, 1000, 500, 500],
-             ledColor: [0, 0, 255, 0]
+             //vibrationPattern: [2000, 1000, 500, 500],
+             //ledColor: [0, 0, 255, 0]
                  }
 
             const payload = {
@@ -165,20 +165,21 @@ function triggernotification(email,msg){
                 console.log(tokenn + "fetchig right" + message +msg.message)
                 if (err) {
                     console.log(err);
-                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
+                   /* cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
                         if (err) console.log(err);
 
                         else{ console.log("sucess")};
                     })
-
+                  */
                         console.log("Something has gone wrong!");
                 } else {
-
+                  /*
                     cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
                         if (err) console.log(err);
 
                         else{ console.log("sucess")};
                     })
+                    */
                     console.log("Successfully sent with response: ", response);
                 }
             });
