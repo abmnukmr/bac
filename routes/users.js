@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
 
          notification = {
             title: 'Hello Guys',
-            body: 'Thank  you'
+            body: 'Thank  you',
         }
 
         const payload = {

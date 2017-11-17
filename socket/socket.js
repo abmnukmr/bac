@@ -139,26 +139,17 @@ function triggernotification(email,msg){
             const fcm = new FCM(apiKey);
             const to=tokenn
 
-         const notificationn = {
-
+            notification = {
                 title: msg.user_sender,
-               // text: msg.message,
-                //icon: 'noti.png',
                 body: msg.message
-                //message: msg,
-            // picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-             //image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
-             // image-type: "circle",
-             //vibrationPattern: [2000, 1000, 500, 500],
-             //ledColor: [0, 0, 255, 0]
                  }
 
             const payload = {
                 to,
-                notificationn,
+                notification,
                 priority: 'high',
                 content_available: true // tried without too
-            }
+                }
 
 
 
