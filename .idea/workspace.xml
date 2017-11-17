@@ -22,8 +22,8 @@
       <file leaf-file-name="socket.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket/socket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="114" column="13" lean-forward="true" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="67" />
+            <state relative-caret-position="-959">
+              <caret line="52" column="33" lean-forward="true" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -446,12 +446,12 @@
       <workItem from="1510118987426" duration="8418000" />
       <workItem from="1510738727014" duration="749000" />
       <workItem from="1510850440046" duration="4635000" />
-      <workItem from="1510912365074" duration="13046000" />
+      <workItem from="1510912365074" duration="13201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="485005000" />
+    <option name="totallyTimeSpent" value="485160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="704" extended-state="0" />
@@ -879,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/socket/socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="114" column="13" lean-forward="true" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="67" />
+        <state relative-caret-position="-959">
+          <caret line="52" column="33" lean-forward="true" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
           <folding />
         </state>
       </provider>
