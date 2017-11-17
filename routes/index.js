@@ -903,12 +903,12 @@ router.post('/user/noti/lastmessage/:id',function (req,res,next) {
         if(err)res.send(err);
         else{ console.log("deleted");
             //res.end("deleted")
-            console.log(id2);
+           // console.log(id2);
         }
 
 
     });
-    //res.send("")
+    res.send("")
 
 })
 
