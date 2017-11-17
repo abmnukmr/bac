@@ -57,9 +57,9 @@ function socket(io) {
                  io.to(msg.sender_mail).emit('gettomessage', msg)
                  triggernotification(msg.email,msg);
                  console.log("Send Notification")
-                 io.emit('chatlist', msg)
 
              }
+            io.emit('chatlist', msg)
 
 
             /// var data= {
