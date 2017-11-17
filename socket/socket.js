@@ -50,7 +50,7 @@ function socket(io) {
                  console.log("Send Notification")
 
              }
-         io.emit('chatlist', msg)
+         socket.emit('chatlist', msg)
 
 
             /// var data= {
@@ -130,7 +130,7 @@ function triggernotification(email,msg){
             const fcm = new FCM(apiKey);
             const to=tokenn
 
-         const notification = {
+         const notificationn = {
 
                 title: msg.user_sender,
                // text: msg.message,
@@ -146,7 +146,7 @@ function triggernotification(email,msg){
 
             const payload = {
                 to,
-                notification,
+                notificationn,
                 priority: 'high',
                 content_available: true, // tried without too
             }
