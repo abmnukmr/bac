@@ -137,9 +137,9 @@ function triggernotification(email,msg){
             const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
            // const deviceID = tokenn
             const fcm = new FCM(apiKey);
-            var to=tokenn
+            const to=tokenn
 
-         var notificationn = {
+         const notificationn = {
 
                 title: msg.user_sender,
                // text: msg.message,
@@ -153,7 +153,7 @@ function triggernotification(email,msg){
              //ledColor: [0, 0, 255, 0]
                  }
 
-            var payload = {
+            const payload = {
                 to,
                 notificationn,
                 priority: 'high',
