@@ -144,7 +144,7 @@ function triggernotification(email,msg){
                 title: msg.user_sender,
                // text: msg.message,
                 //icon: 'noti.png',
-                body: msg.message,
+                body: msg.message
                 //message: msg,
             // picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
              //image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
@@ -157,7 +157,7 @@ function triggernotification(email,msg){
                 to,
                 notificationn,
                 priority: 'high',
-                content_available: true, // tried without too
+                content_available: true // tried without too
             }
 
 
