@@ -46,7 +46,7 @@ function socket(io) {
              else {
                 //var token= users.find({"email":msg.email})
                  io.to(msg.sender_mail).emit('gettomessage', msg)
-                // triggernotification(msg.email,msg);
+                 triggernotification(msg.email,msg);
                  console.log("Send Notification")
 
              }
@@ -126,9 +126,9 @@ function triggernotification(email,msg){
             const FCM = require('fcm-node');
 // Replace these with your own values.
             const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
-            const deviceID = tokenn
+           // const deviceID = tokenn
             const fcm = new FCM(apiKey);
-            const to=tokenn
+            var to=tokenn
 
          const notificationn = {
 
