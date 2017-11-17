@@ -11,7 +11,7 @@ const search = db.get('search')
 const cred = db.get('user_detatils')
 const addv=db.get('ad_final')
 const settings=db.get('settings')
-const notification=db.get('notification')
+//const notification=db.get('notification')
 
 
 
