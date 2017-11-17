@@ -55,7 +55,13 @@ function socket(io) {
              else {
                 //var token= users.find({"email":msg.email})
                  io.to(msg.sender_mail).emit('gettomessage', msg)
-                 triggernotification(msg.email,msg);
+                 cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
+                     if (err) console.log(err);
+
+                     else{ console.log("sucess")};
+                 })
+
+                 // triggernotification(msg.email,msg);
                  console.log("Send Notification")
              }
 
