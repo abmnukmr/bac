@@ -154,7 +154,7 @@ function triggernotification(email,msg){
 
 
             fcm.send(payload, function (err,response) {
-               // console.log(tokenn + "fetchig right" + message +msg.message)
+             /// console.log(tokenn + "fetchig right" + message +msg.message)
                 if (err) {
                     console.log(err);
                     cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
