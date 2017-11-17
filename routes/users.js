@@ -4,6 +4,15 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
+    var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
+    const db = require('monk')(URL)
+    const users = db.get('profile')
+    const search = db.get('search')
+    const cred = db.get('user_detatils')
+    const addv=db.get('ad_final')
+    const settings=db.get('settings')
+   // const notification=db.get('notification')
+
 
 
 

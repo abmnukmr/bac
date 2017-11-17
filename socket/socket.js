@@ -4,6 +4,15 @@
 
 
 
+var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
+const db = require('monk')(URL)
+const users = db.get('profile')
+const search = db.get('search')
+const cred = db.get('user_detatils')
+const addv=db.get('ad_final')
+const settings=db.get('settings')
+const notification=db.get('notification')
+
 
 
 
@@ -130,7 +139,7 @@ function triggernotification(email,msg){
             const fcm = new FCM(apiKey);
             var to=tokenn
 
-         const notificationn = {
+         var notificationn = {
 
                 title: msg.user_sender,
                // text: msg.message,
@@ -144,7 +153,7 @@ function triggernotification(email,msg){
              //ledColor: [0, 0, 255, 0]
                  }
 
-            const payload = {
+            var payload = {
                 to,
                 notificationn,
                 priority: 'high',
