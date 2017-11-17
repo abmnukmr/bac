@@ -134,28 +134,32 @@ function triggernotification(email,msg){
             const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
             const deviceID = tokenn
             const fcm = new FCM(apiKey);
+            const to=tokenn
 
-            var message = {
-                to:tokenn,
+         const notification = {
+
+                title: msg.user_sender,
+                text: msg.message,
+                icon: 'noti.png',
+                body: msg.user_sender,
+                message: msg,
+             picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
+             image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
+             // image-type: "circle",
+             vibrationPattern: [2000, 1000, 500, 500],
+             ledColor: [0, 0, 255, 0]
+                 }
+
+            const payload = {
+                to,
+                notification,
                 priority: 'high',
+                content_available: true, // tried without too
+            }
 
 
-                data: {
-                    title: msg.user_sender,
-                    text: msg.message,
-                    icon: 'noti.png',
-                    body: msg.user_sender,
-                    message: msg,
-                    //image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-                    picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
-                    image: "https://pbs.twimg.com/profile_images/837060031895896065/VHIQ4oUf_400x400.jpg",
-                   // image-type: "circle",
-                    vibrationPattern: [2000, 1000, 500, 500],
-                    ledColor: [0, 0, 255, 0]
-                }
-            };
 
-            fcm.send(message, function (err,response) {
+            fcm.send(payload, function (err,response) {
                 console.log(tokenn + "fetchig right" + message +msg.message)
                 if (err) {
                     console.log(err);
