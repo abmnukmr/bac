@@ -112,14 +112,6 @@ function socket(io) {
 
 function triggernotification(email,msg){
 
-    var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
-    const db = require('monk')(URL)
-    const users = db.get('profile')
-    const search = db.get('search')
-    const cred = db.get('user_detatils')
-    const addv=db.get('ad_final')
-    const settings=db.get('settings')
-    const notification=db.get('notification')
 
 
     var  tokenn;
@@ -162,24 +154,23 @@ function triggernotification(email,msg){
 
 
             fcm.send(payload, function (err,response) {
-                console.log(tokenn + "fetchig right" + message +msg.message)
+               // console.log(tokenn + "fetchig right" + message +msg.message)
                 if (err) {
                     console.log(err);
-                   /* cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
-                        if (err) console.log(err);
-
-                        else{ console.log("sucess")};
-                    })
-                  */
-                        console.log("Something has gone wrong!");
-                } else {
-                  /*
                     cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
                         if (err) console.log(err);
 
                         else{ console.log("sucess")};
                     })
-                    */
+
+                        console.log("Something has gone wrong!");
+                } else {
+
+                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
+                        if (err) console.log(err);
+
+                        else{ console.log("sucess")};
+                    })
                     console.log("Successfully sent with response: ", response);
                 }
             });
