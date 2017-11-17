@@ -46,7 +46,7 @@ function socket(io) {
              else {
                 //var token= users.find({"email":msg.email})
                  io.to(msg.sender_mail).emit('gettomessage', msg)
-                 triggernotification(msg.email,msg);
+                // triggernotification(msg.email,msg);
                  console.log("Send Notification")
 
              }
