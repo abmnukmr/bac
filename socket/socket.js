@@ -4,15 +4,6 @@
 
 
 
-var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
-const db = require('monk')(URL)
-const users = db.get('profile')
-const search = db.get('search')
-const cred = db.get('user_detatils')
-const addv=db.get('ad_final')
-const settings=db.get('settings')
-const notification=db.get('notification')
-
 
 
 
@@ -120,7 +111,18 @@ function socket(io) {
 
 
 function triggernotification(email,msg){
-     var  tokenn;
+
+    var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
+    const db = require('monk')(URL)
+    const users = db.get('profile')
+    const search = db.get('search')
+    const cred = db.get('user_detatils')
+    const addv=db.get('ad_final')
+    const settings=db.get('settings')
+    const notification=db.get('notification')
+
+
+    var  tokenn;
     cred.find({"email":email},function (err, docs) {
         if (err) console.log(err);
         else {
