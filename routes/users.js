@@ -16,13 +16,19 @@ router.get('/', function(req, res, next) {
     var message = {
         to:"fT3L6c-pOCY:APA91bGcCwjA8CUwpM_246x-QWHWCjrh4zoC4m_qsr1-G8Sh0AAx4axc4zZLgkLXCpRt0ifF_xf-21UrZQVUmh-psNgxX2v5Fh-3FU2jvPBZmAPtNFWwxrQDd7TfMOCWPYIsvJaDyVkV",
 
-
+       // mutable_content:true,
+        priority: 'high',
+       // content_available : true,
+       //   text: " msgmessage",
+        //message: "msg",
 
         data: {
             //title: "msg.user_sender",
-            text: " msg.message",
             //icon: 'noti.png',
-            //body: "msg.user_sender",
+            body: "msguser_sender",
+            text: " msgmessage",
+            //            priority: 'high',
+
             message: "msg",
             //image:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',
             //picture:'https://img13.androidappsapk.co/300/0/d/3/com.vaioti.png',

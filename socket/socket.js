@@ -137,7 +137,7 @@ function triggernotification(email,msg){
 
             var message = {
                 to:tokenn,
-
+                priority: 'high',
 
 
                 data: {
