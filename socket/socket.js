@@ -59,7 +59,7 @@ function socket(io) {
                  console.log("Send Notification")
 
              }
-         socket.emit('chatlist', msg)
+         io.emit('chatlist', msg)
 
 
             /// var data= {
