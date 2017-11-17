@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5c0da5d5-7f92-4517-a8b9-52f86c5a0321" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/socket/socket.js" afterPath="$PROJECT_DIR$/socket/socket.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="socket.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="socket.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/socket/socket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="161" column="28" lean-forward="false" selection-start-line="161" selection-start-column="28" selection-end-line="161" selection-end-column="28" />
+            <state relative-caret-position="233">
+              <caret line="143" column="22" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -53,7 +54,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="811">
@@ -436,12 +437,12 @@
       <workItem from="1510118987426" duration="8418000" />
       <workItem from="1510738727014" duration="749000" />
       <workItem from="1510850440046" duration="4635000" />
-      <workItem from="1510912365074" duration="10713000" />
+      <workItem from="1510912365074" duration="11170000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="482672000" />
+    <option name="totallyTimeSpent" value="483129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="704" extended-state="0" />
@@ -847,10 +848,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket/socket.js">
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="161" column="28" lean-forward="false" selection-start-line="161" selection-start-column="28" selection-end-line="161" selection-end-column="28" />
+        <state relative-caret-position="811">
+          <caret line="793" column="12" lean-forward="true" selection-start-line="793" selection-start-column="12" selection-end-line="793" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -863,10 +864,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/socket/socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="793" column="12" lean-forward="true" selection-start-line="793" selection-start-column="12" selection-end-line="793" selection-end-column="12" />
+        <state relative-caret-position="233">
+          <caret line="143" column="22" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
           <folding />
         </state>
       </provider>
