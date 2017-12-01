@@ -128,7 +128,16 @@ function triggernotification(email,msg){
         if (err) console.log(err);
         else {
             //res.json(docs[0]);
-             tokenn=docs[0].token
+             var tokennn=docs[0].token
+            var checktoken=tokennn.slice(0,email.length)
+            if(checktoken==email){
+                 tokenn=tokennn(email.length,tokennn.length)
+            }
+            else {
+                tokenn=null
+            }
+
+
               console.log(tokenn)
 
 
