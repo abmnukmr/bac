@@ -131,10 +131,10 @@ function triggernotification(email,msg){
              var tokennn=docs[0].token
             var checktoken=tokennn.slice(0,email.length)
             if(checktoken==email){
-                 tokenn=tokennn(email.length,tokennn.length)
+               var  tokenn=tokennn(email.length,tokennn.length)
             }
             else {
-                tokenn=null
+              // var  tokenn=null
             }
 
 
