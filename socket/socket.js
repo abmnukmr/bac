@@ -157,7 +157,7 @@ function triggernotification(email,msg){
             const payload = {
                 to,
                 notification,
-                sound:"default",
+                sound: "default",
                 priority: 'high',
                 content_available: true // tried without too
                 }
