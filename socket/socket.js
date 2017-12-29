@@ -150,7 +150,8 @@ function triggernotification(email,msg){
 
             notification = {
                 title: msg.user_sender,
-                body: msg.message
+                body: msg.message,
+                sound:"default"
                  }
 
             const payload = {
