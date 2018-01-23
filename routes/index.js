@@ -637,8 +637,8 @@ router.post('/user/create/new', function (req, res, next) {
                 "otp": req.body.otp,
                 "date": y.toString() + m.toString() + d.toString(),
                 "fav": [],
-                "scan": []
-
+                "scan": [],
+                "token":""
             }
             cred.insert(detail, function (err, docs) {
                 if (err) console.log(err);

@@ -1,3 +1,4 @@
+
 /**
  * Created by manyu on 13/08/17.
  */
@@ -150,12 +151,14 @@ function triggernotification(email,msg){
 
             notification = {
                 title: msg.user_sender,
-                body: msg.message
+                body: msg.message,
+                sound:"default"
                  }
 
             const payload = {
                 to,
                 notification,
+                sound:"default",
                 priority: 'high',
                 content_available: true // tried without too
                 }
@@ -194,3 +197,4 @@ function triggernotification(email,msg){
 
 
 module.exports = socket;
+
