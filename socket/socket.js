@@ -49,7 +49,7 @@ function socket(io) {
              if(t){
 
 
-                 io.to(msg.email).to(msg.sender_mail).emit('gettomessage', msg)
+                 io.to(msg.sender_mail).to(msg.email).emit('gettomessage', msg)
 
              }
              else {
@@ -151,7 +151,9 @@ function triggernotification(email,msg){
             notification = {
                 title: msg.user_sender,
                 body: msg.message,
-                sound:"default"
+                sound:"default",
+
+                priority: 'high',
                  }
 
             const payload = {
