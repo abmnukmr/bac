@@ -44,18 +44,21 @@ function socket(io) {
         socket.on('gettomessage', function (msg) {
 
 
+
+         io.to(msg.sender_mail).emit('gettomessage',msg);
+
           var t=socket.adapter.rooms[msg.email];
             console.log(socket.adapter.rooms[msg.email]);
 
              if(t){
 
 
-                 io.to(msg.sender_mail).to(msg.email).emit('gettomessage', msg)
+                 io.to(msg.email).emit('gettomessage', msg);
 
              }
              else {
                 //var token= users.find({"email":msg.email})
-                 io.to(msg.sender_mail).emit('gettomessage', msg)
+                
                  triggernotification(msg.email,msg);
                  console.log("Send Notification")
 
@@ -152,24 +155,16 @@ function triggernotification(email,msg){
             notification = {
                 title: msg.user_sender,
                 body: msg.message,
-<<<<<<< HEAD
-                sound:"default"
-=======
-                sound:"default",
 
-                priority: 'high',
->>>>>>> 3beeb29841adeb45452e4134d05b1a8f9fa8bca4
-                 }
+                sound:"default",
+                priority: 'high'
+                }
 
             const payload = {
                 to,
                 notification,
-<<<<<<< HEAD
-                sound:"default",
-=======
-                sound: "default",
->>>>>>> 3beeb29841adeb45452e4134d05b1a8f9fa8bca4
-                priority: 'high',
+               sound:"default",
+                  priority: 'high',
                 content_available: true // tried without too
                 }
 
