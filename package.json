@@ -27,6 +27,15 @@
     "nodemon": "^1.12.1",
     "serve-favicon": "~2.3.2",
     "socket.io": "^2.0.3",
+<<<<<<< HEAD
     "twilio": "^2.11.1"
+=======
+    "twilio": "^2.11.1",
+    "node-mailer": "^0.1.1",
+    "nodemailer": "^4.4.1",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemailer-smtp-transport": "^2.7.4"
+
+>>>>>>> 3beeb29841adeb45452e4134d05b1a8f9fa8bca4
   }
 }

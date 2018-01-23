@@ -50,7 +50,7 @@ function socket(io) {
              if(t){
 
 
-                 io.to(msg.email).to(msg.sender_mail).emit('gettomessage', msg)
+                 io.to(msg.sender_mail).to(msg.email).emit('gettomessage', msg)
 
              }
              else {
@@ -152,13 +152,23 @@ function triggernotification(email,msg){
             notification = {
                 title: msg.user_sender,
                 body: msg.message,
+<<<<<<< HEAD
                 sound:"default"
+=======
+                sound:"default",
+
+                priority: 'high',
+>>>>>>> 3beeb29841adeb45452e4134d05b1a8f9fa8bca4
                  }
 
             const payload = {
                 to,
                 notification,
+<<<<<<< HEAD
                 sound:"default",
+=======
+                sound: "default",
+>>>>>>> 3beeb29841adeb45452e4134d05b1a8f9fa8bca4
                 priority: 'high',
                 content_available: true // tried without too
                 }
