@@ -28,5 +28,5 @@
     "serve-favicon": "~2.3.2",
     "socket.io": "^2.0.3",
     "twilio": "^2.11.1"
-     }
+  }
 }
