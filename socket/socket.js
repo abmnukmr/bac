@@ -1,9 +1,15 @@
 
+
+
+
+
 /**
  * Created by manyu on 13/08/17.
  */
 
-
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 var URL='mongodb://abmnukmr:12345@ds035703.mlab.com:35703/vioti';
 const db = require('monk')(URL)
@@ -36,9 +42,15 @@ function socket(io) {
         socket.on('socketjoined',function (room) {
             console.log("user joined",room)
             socket.join(room);
-            online.push(room)
+//            online.push(room)
 
 
+        }) 
+
+      socket.on('sockleave',function (room) {
+            console.log("user leave",room)
+            socket.leave(room);
+            //    online.push(room)
         })
 
         socket.on('gettomessage', function (msg) {
@@ -63,7 +75,7 @@ function socket(io) {
                  console.log("Send Notification")
 
              }
-         io.emit('chatlist', msg)
+         io.emit('chatlist'+msg.email, msg)
 
 
             /// var data= {
@@ -132,21 +144,33 @@ function triggernotification(email,msg){
         if (err) console.log(err);
         else {
             //res.json(docs[0]);
+             
              var tokennn=docs[0].token
-            var checktoken=tokennn.slice(0,email.length)
-            if(checktoken==email){
+           if(tokennn==undefined){
+//         sendmail(email,"Mail Notification",msg.message)        
+//           sendmail("abmnukmr@gmail.com","Mail notification","hfgjshdgfsdjhffahfjahjhafdshf");
+
+}          else{
+          
+               console.log(tokennn)
+  //             sendmail(email,"Mail Notification",msg.message)
+    //           sendmail("abmnukmr@gmail.com","Mail Notification","jgfsajdhgfjhasd") 
+             var checktoken=tokennn.slice(0,email.length)
+                  console.log(checktoken)
+               if(checktoken==email){
                var  tokenn=tokennn.slice(email.length,tokennn.length)
-            }
+             }
+
             else {
               // var  tokenn=null
             }
-
+}
 
               console.log(tokenn)
 
 
             const FCM = require('fcm-node');
-// Replace these with your own values.
+           // Replace these with your own values.
             const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
            // const deviceID = tokenn
             const fcm = new FCM(apiKey);
@@ -155,16 +179,15 @@ function triggernotification(email,msg){
             notification = {
                 title: msg.user_sender,
                 body: msg.message,
-
                 sound:"default",
-                priority: 'high'
+               
                 }
 
             const payload = {
                 to,
                 notification,
-               sound:"default",
-                  priority: 'high',
+                
+                
                 content_available: true // tried without too
                 }
 
@@ -200,6 +223,47 @@ function triggernotification(email,msg){
 
 }
 
+
+function sendmail(data,sub, message) {
+
+
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+var smtpTransport = require('nodemailer-smtp-transport');
+
+    var transporter = nodemailer.createTransport(smtpTransport({
+        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'vaiotiservices@gmail.com',
+            pass: 'Arjunsingh1$'
+        }
+    }));
+
+
+    var  mail = {
+        from: 'VAIOTI<conatct@vaioti.in>', // sender address
+        to: data, // list of receivers
+        subject: sub, // Subject line
+        text: message, // plain text body
+       // html: '<b>Hello world?</b>' // html body
+    };
+
+        transporter.sendMail(mail, function(err, res){
+            if (err){
+                console.log(err)
+               console.log("Error in sending mail and STMp") 
+                          }
+           else{
+                console.log(res);
+               console.log("Suucessfully Email sent")
+           }       
+ });
+
+
+}
 
 module.exports = socket;
 
