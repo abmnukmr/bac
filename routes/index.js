@@ -67,9 +67,11 @@ var upload = multer({
         "id" : Date.now()+"gne5cr5der",
         "image":req.files,
        "link":req.body.link,
-       "label":req.body.label
+       "label":req.body.label,
     }
-
+    var trigger=req.body.trigger,
+       
+       
      //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
     console.log(items);
     ///item is main key
