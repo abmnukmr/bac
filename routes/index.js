@@ -505,7 +505,7 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
                      for(let i=0; i<fav.length;i++)
                      {
                      
-                      triggernotification(fav[i].email,docs[0].name,body,req.params.id)
+                      triggernotification(fav[i].email,docs[0].name,discr,req.params.id)
                      
                      }
                      
