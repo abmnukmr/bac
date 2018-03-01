@@ -17,7 +17,7 @@ const search = db.get('search')
 const cred = db.get('user_detatils')
 const addv=db.get('ad_final')
 const settings=db.get('settings')
-const notification=db.get('notification')
+const notificationn=db.get('notification')
 
 
 aws.config.loadFromPath('./config.json');
@@ -82,6 +82,30 @@ var upload = multer({
         }
     })
        res.send("succesfully done");
+       if(trigger==true) {
+         users.find({'email': req.params.id}, function (err, docs) {
+             //console.log("updated is needed")
+             if (err) console.log(err);
+
+             else {
+                 //res.json(docs[0]);
+
+                 var fav = docs[0].fav
+
+                 console.log(JSON.stringify(fav))
+                 for (let i=0; i < fav.length; i++) {
+
+                     triggernotification(fav[i].email, docs[0].name, discr, req.params.id)
+
+                 }
+
+             }
+
+         })
+
+     }else {
+
+     }
 
 
    })
@@ -427,7 +451,7 @@ router.post('/profile/upload/email/location/:id',function (req,res,next) {
 
 ///// get all notifiaction
 router.get('/public/notification',function (req,res,next) {
-     notification.find({"note":"notification"},function (err,docs) {
+     notificationn.find({"note":"notification"},function (err,docs) {
         if(err) console.log(err)
          else {
             res.json(docs[0])
@@ -485,54 +509,68 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
     prc=req.body.item_price;
     id2=req.body.item_id
     link=req.body.link;
-   label=req.body.label;
+    label=req.body.label;
     trigger=req.body.trigger;
     users.update({"email":req.params.id,"item.id":id2},
-        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc,"item.$.link":link,"item.$.label":label}},false ,
+        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
         true
         ,function (err,res,result) {
-            if(err)res.send(err);
-            else{ console.log("updated done");
+            if(err){
+                res.send(err);
+            }
 
-                    if(trigger==true){
-                 
-                  users.find({'email': req.params.id}, function (err, docs) {
-                 if (err) console.log(err);
+            else
+                {
+                   console.log("updated done");
 
-                 else {
-                     res.json(docs[0]);
-                     var fav=docs[0].fav
-                     
-                     for(let i=0; i<fav.length;i++)
-                     {
-                     
-                      triggernotification(fav[i].email,docs[0].name,discr,req.params.id)
-                     
-                     }
-                     
-                 }
-                  
-                  })
-                    }else{
-                    
-                    
-                    }
+
+                   res.send("hkhk")
                 console.log(id2);
             }
 
+            console.log("update Successfully");
 
-        });
+
+
+            });
+    res.send("updated");
+    res.end();
+
+    console.log("update Successfully");
+
+     if(trigger==true) {
+         users.find({'email': req.params.id}, function (err, docs) {
+             //console.log("updated is needed")
+             if (err) console.log(err);
+
+             else {
+                 //res.json(docs[0]);
+
+                 var fav = docs[0].fav
+
+                 console.log(JSON.stringify(fav))
+                 for (let i=0; i < fav.length; i++) {
+
+                     triggernotification(fav[i].email, docs[0].name, discr, req.params.id)
+
+                 }
+
+             }
+
+         })
+
+     }else {
+
+     }
+
+
+
 
 
 
     //res.send("deleted Successfully");
-    console.log("update Successfully");
-
-    res.send("updated");
-    res.end();
 
 });
-
 
 //// update contact
 
@@ -962,47 +1000,53 @@ router.get('/tes/:id1/:id2',function (req,res,next) {
 
 
 
-
 function triggernotification(email,title,body,sender){
 
 
+
+    const FCM = require('fcm-node');
 
     var  tokenn;
     cred.find({"email":email},function (err, docs) {
         if (err) console.log(err);
         else {
             //res.json(docs[0]);
+
             var tokennn=docs[0].token
+            if(tokennn==undefined){
+//         sendmail(email,"Mail Notification",msg.message)
+//           sendmail("abmnukmr@gmail.com","Mail notification","hfgjshdgfsdjhffahfjahjhafdshf");
 
+            }          else{
 
+                console.log(tokennn)
+                //             sendmail(email,"Mail Notification",msg.message)
+                //           sendmail("abmnukmr@gmail.com","Mail Notification","jgfsajdhgfjhasd")
+                var checktoken=tokennn.slice(0,email.length)
+                console.log(checktoken)
+                if(checktoken==email){
+                    var  tokenn=tokennn.slice(email.length,tokennn.length)
+                }
 
-            var checktoken=tokennn.slice(0,email.length)
-
-
-            if(checktoken==email){
-                var  tokenn=tokennn.slice(email.length,tokennn.length)
+                else {
+                    // var  tokenn=null
+                }
             }
-            else {
-                // var  tokenn=null
-            }
-
 
             console.log(tokenn)
 
 
-            const FCM = require('fcm-node');
-// Replace these with your own values.
+            // Replace these with your own values.
             const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
             // const deviceID = tokenn
             const fcm = new FCM(apiKey);
             const to=tokenn
 
-            // noinspection JSAnnotator
-            notificationn = {
+            notification = {
                 title: title,
                 body: body,
                 sound:"default",
-                priority: 'high',
+
             }
 
             data={
@@ -1014,10 +1058,9 @@ function triggernotification(email,title,body,sender){
             const payload = {
                 to,
                 data,
-                notificationn,
-                sound: "default",
-                priority: 'high',
-                nevigate:"chat",
+
+                notification,
+
                 content_available: true // tried without too
             }
 
@@ -1027,20 +1070,12 @@ function triggernotification(email,title,body,sender){
                 /// console.log(tokenn + "fetchig right" + message +msg.message)
                 if (err) {
                     console.log(err);
-                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
-                        if (err) console.log(err);
 
-                        else{ console.log("sucess")};
-                    })
 
                     console.log("Something has gone wrong!");
                 } else {
 
-                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
-                        if (err) console.log(err);
-
-                        else{ console.log("sucess")};
-                    })
+                   /// console.log(payload)
                     console.log("Successfully sent with response: ", response);
                 }
             });
@@ -1050,7 +1085,6 @@ function triggernotification(email,title,body,sender){
     })
 
 
-    
 
 }
 
