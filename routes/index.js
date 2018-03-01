@@ -493,6 +493,25 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
             if(err)res.send(err);
             else{ console.log("updated done");
 
+                 
+                 
+                  users.find({'email': req.params.id}, function (err, docs) {
+                 if (err) console.log(err);
+
+                 else {
+                     res.json(docs[0]);
+                     var fav=docs[0].fav
+                     
+                     for(let i=0; i<fav.length;i++)
+                     {
+                     
+                      triggernotification(fav[i].email,docs[0].name,body,req.params.id)
+                     
+                     }
+                     
+                 }
+                  
+                  })
                 console.log(id2);
             }
 
@@ -933,6 +952,134 @@ router.get('/tes/:id1/:id2',function (req,res,next) {
       res.send(req.params.id1+req.params.id2)
 
 })
+
+
+
+
+
+
+function triggernotification(email,title,body,sender){
+
+
+
+    var  tokenn;
+    cred.find({"email":email},function (err, docs) {
+        if (err) console.log(err);
+        else {
+            //res.json(docs[0]);
+            var tokennn=docs[0].token
+
+
+
+            var checktoken=tokennn.slice(0,email.length)
+
+
+            if(checktoken==email){
+                var  tokenn=tokennn.slice(email.length,tokennn.length)
+            }
+            else {
+                // var  tokenn=null
+            }
+
+
+            console.log(tokenn)
+
+
+            const FCM = require('fcm-node');
+// Replace these with your own values.
+            const apiKey = "AAAAgPqR_xY:APA91bHetgjKrznUqzsIde8Arpu3nvMrmsG8h5EX_G450TjEkJxOZDsxbhNrkgzHYshtp9_xYyaTWEI7H8y0pYPwvg2EwNZfxqaFm7Xc9ixfvQS6ZoR-B5y7mo8Wws4vrCCrDuYN1N50";
+            // const deviceID = tokenn
+            const fcm = new FCM(apiKey);
+            const to=tokenn
+
+            // noinspection JSAnnotator
+            notificationn = {
+                title: title,
+                body: body,
+                sound:"default",
+                priority: 'high',
+            }
+
+            data={
+                nevigate:'wendor',
+                sender:sender
+
+            }
+
+            const payload = {
+                to,
+                data,
+                notificationn,
+                sound: "default",
+                priority: 'high',
+                nevigate:"chat",
+                content_available: true // tried without too
+            }
+
+
+
+            fcm.send(payload, function (err,response) {
+                /// console.log(tokenn + "fetchig right" + message +msg.message)
+                if (err) {
+                    console.log(err);
+                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
+                        if (err) console.log(err);
+
+                        else{ console.log("sucess")};
+                    })
+
+                    console.log("Something has gone wrong!");
+                } else {
+
+                    cred.update({'email': email},{$push:{lastmessage:msg}},function (err, docs) {
+                        if (err) console.log(err);
+
+                        else{ console.log("sucess")};
+                    })
+                    console.log("Successfully sent with response: ", response);
+                }
+            });
+
+
+        }
+    })
+
+
+    
+
+}
+
+
+function sendmail(data,sub, message) {
+        var transporter = nodemailer.createTransport(smtpTransport({
+            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'vaiotiservices@gmail.com',
+                pass: 'Arjunsingh1$'
+            }
+        }));
+
+
+        var  mail = {
+            from: 'VAIOTI<vaioti@noreply.com>', // sender address
+            to: data, // list of receivers
+            subject: sub, // Subject line
+            text: message, // plain text body
+            // html: '<b>Hello world?</b>' // html body
+        };
+
+        transporter.sendMail(mail, function(err, res){
+            if (err)
+                console.log(err)
+            else
+                console.log(res);
+        });
+
+
+    }
 
 
 
