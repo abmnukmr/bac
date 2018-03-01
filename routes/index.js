@@ -485,7 +485,8 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
     prc=req.body.item_price;
     id2=req.body.item_id
     link=req.body.link;
-   label=req.body.label
+   label=req.body.label;
+    trigger=req.body.trigger;
     users.update({"email":req.params.id,"item.id":id2},
         { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc,"item.$.link":link,"item.$.label":label}},false ,
         true
@@ -493,7 +494,7 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
             if(err)res.send(err);
             else{ console.log("updated done");
 
-                 
+                    if(trigger==true){
                  
                   users.find({'email': req.params.id}, function (err, docs) {
                  if (err) console.log(err);
@@ -512,6 +513,10 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
                  }
                   
                   })
+                    }else{
+                    
+                    
+                    }
                 console.log(id2);
             }
 
