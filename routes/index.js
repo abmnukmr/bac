@@ -69,7 +69,7 @@ var upload = multer({
        "link":req.body.link,
        "label":req.body.label,
     }
-    var trigger=req.body.trigger,
+    var trigger=req.body.trigger;
        
        
      //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
