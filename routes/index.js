@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var aws = require('aws-sdk');
@@ -64,7 +65,9 @@ var upload = multer({
         "discription" :req.body.discription,
         "price": req.body.itemprice,
         "id" : Date.now()+"gne5cr5der",
-        "image":req.files
+        "image":req.files,
+       "link":req.body.link,
+       "label":req.body.label
     }
 
      //  console.log(res.params.id1,res.params.id2,res.params.id3,res.params.id4+" Hellopost");
@@ -368,7 +371,18 @@ router.post('/profile/dislike/shop/:id',function (req,res,next) {
 
 
 
+///// quick list
+router.post('/profile/email/update/dis/quicklist/:id',function(req,res,next){
 
+   users.update({'email':req.params.id},{$set:{"quicklist":req.body.quicklist}},false,true,function(err,result){
+    if(err){console.log(err)}
+    else{
+       console.log("Success")
+      }
+})
+res.send("starus")
+ res.end()
+})
 
 
 
@@ -470,9 +484,10 @@ router.post('/profile/email/update/item/:id',function(req, res,next) {
     discr=req.body.item_discription;
     prc=req.body.item_price;
     id2=req.body.item_id
-
+    link=req.body.link;
+   label=req.body.label
     users.update({"email":req.params.id,"item.id":id2},
-        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc}},false ,
+        { $set:{"item.$.itemname": itemname, "item.$.itemno":itemno, "item.$.discription":discr, "item.$.price":prc,"item.$.link":link,"item.$.label":label}},false ,
         true
         ,function (err,res,result) {
             if(err)res.send(err);
