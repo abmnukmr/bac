@@ -30,7 +30,7 @@ var s0 = new aws.S3({})
 var upload = multer({
     storage: multerS3({
         s3: s0,
-        bucket: 'vaiotidb',
+        bucket: 'vaiotiaws',
         acl: 'public-read',
 //       accessKeyId:'AKIAI3Q6TFHIZE67TWSQ',
   //     secretAccessKey: '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',
